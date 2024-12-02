@@ -1,0 +1,17 @@
+permutation.cpp					下一个排列			POJ1833
+orders.cpp					生成可重集的排列			POJ1731
+abbottsrevenge.cpp				BFS搜索最短路径			UVa816
+themorningafterhalloween.cpp			BFS;路径查找优化			UVa1601
+knightmoves.cpp					双向BFS				POJ1915
+thesultanssuccessors.cpp			八皇后问题			UVa167
+primeringproblem.cpp				回溯法和生成测试法的比较		UVa524
+kryptonfactor.cpp				回溯法；避免无用判断		UVa129
+egyptianfractions.cpp				迭代加深搜索			BIO1997Round
+egyptianfractionrujialiupresent.cpp  		IDA*:迭代加深搜索		UVa12558
+remmargutsdata.cpp				A*；K段路问题			POJ2449
+guardingthechessboard.cpp			棋盘皇后覆盖			UVa11214
+houseofcards.cpp				极大极小过程；Alpha-beta
+						剪枝；对抗搜索			UVa1085
+sudokudancinglinks.cpp				数独；Dancing Links		POJ3076
+numbergamedfs.cpp				数位统计；DFS 			NC50517
+amountofdegrees.cpp				数位统计；DFS			NC50516

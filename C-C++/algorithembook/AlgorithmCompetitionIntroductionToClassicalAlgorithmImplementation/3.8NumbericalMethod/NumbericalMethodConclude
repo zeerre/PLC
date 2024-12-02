@@ -1,0 +1,3 @@
+solveit.cpp					非线性方程求根：牛顿法			UVa10341
+errorcurves.cpp					凸函数求极值：三分法			HDU3714
+simpsonbridge.cpp				数值积分：自适应Simpson公式		UVa1356

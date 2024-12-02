@@ -1,0 +1,3 @@
+lifeforms.cpp				后缀数组				UVa11107
+stammeringaliens.cpp			基于Hash的LCP			UVa12206
+extendtopalindrome.cpp			manacher			UVa11475
