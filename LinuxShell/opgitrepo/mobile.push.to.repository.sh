@@ -12,13 +12,13 @@ echo
 
 git pull
 
-git merge origin/master.buffer
+git merge origin/master.amain
 
 echo
 echo
 echo "UpdateTime:"$(date +%F%n%T)
 echo "Updated all the branch ,
-    And merged master.buffer to local branch COMPLETED!!!Thanks!!!"
+    And merged master.amain to local branch COMPLETED!!!Thanks!!!"
 
 echo "Start the Updating Remote branch from local!!!"
 echo
