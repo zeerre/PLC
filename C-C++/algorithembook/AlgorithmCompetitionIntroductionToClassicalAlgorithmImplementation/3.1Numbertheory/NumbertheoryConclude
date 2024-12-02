@@ -1,0 +1,15 @@
+minimumsumLCM.cpp				唯一分解					UVa10791
+colossalfibonaccinumbers.cpp			模算术；幂取模				UVa11582
+chooseanddivide.cpp				模幂运算；素数判定			UVa10375
+josephsproblem.cpp				数列求和					UVa1363
+pairofintegers.cpp				扩展欧几里得				UVa1654
+helpmrtomisuphi.cpp				素数筛法；阶乘的phi函数			UVa11440
+gcd-extremeIIphi.cpp				gcd函数；phi函数				UVa11426
+sendatablephi.cpp				欧拉phi函数预处理				UVa10820
+treesinawood.cpp				欧拉phi函数				UVa10214
+codefeat.cpp					中国剩余定理				UVa11754
+ahorriblepoem.cpp				Hash;线性筛；素数分解			NC50316
+visiblelatticepoints.cpp			莫比乌斯反演				SPOJ-VLATTICE
+mophuesgcd.cpp					莫比乌斯反演；GCD				HDU4746
+decryptmessagesbsgs.cpp				高次模方程;BSGS;原根			UVa1457
+powermoduloinvertedbsgs.cpp			扩展BSGS；离散对数			SPOJ MOD

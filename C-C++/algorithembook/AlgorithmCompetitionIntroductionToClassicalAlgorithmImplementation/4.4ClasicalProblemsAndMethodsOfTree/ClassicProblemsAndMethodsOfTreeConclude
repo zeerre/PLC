@@ -1,0 +1,7 @@
+howfaraway.cpp						倍增LCA						HDU2586
+tree.cpp						树的点分治；路径统计				POJ1741
+ironmanraceintreeland.cpp				树的点分治；路径统计				Uva12161
+lightningenergyreport-treechainsplitting.cpp
+lightningenergyreport-LCAtreechainsplitting.cpp		树链剖分；维护边权；树上差分			UVa1674
+packagemanager.cpp					树链剖分；维护点权；子树点权			NC17882
+letthereberainbows.cpp					基于迭代的树链剖分				IPSC2009Problem L

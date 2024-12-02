@@ -1,0 +1,16 @@
+textquotes.cpp			输入输出函数						UVa272
+agesort-1.cpp			计数排序与IO优化						UVa11462
+agesort-2.cpp			计数与排序IO优化						UVa11462
+palindromes.cpp			字符函数；常量数组					UVa401
+circularsequence.cpp		字典序							UVa1584
+messagedecoding.cpp		二进制；输入技巧；调试技巧					UVa213
+whereisthemarble.cpp		排序和查找						UVa10474
+thesetstackcomputer.cpp		stack;set实现集合操作					UVa12096
+ananagrams.cpp			map的使用						UVa156
+teamqueue.cpp			queue的使用						UVa540
+database.cpp			map的妙用						UVa1592
+theblocksproblem.cpp		vector的使用						UVa101
+andysfirstdictionary.cpp	set的使用						UVa10815
+uglynumbers.cpp			priority_queue的使用					UVa136
+brokenkeyboard.cpp		STL链表的使用						UVa11988
+urbanelevations.cpp		离散化							UVa221
