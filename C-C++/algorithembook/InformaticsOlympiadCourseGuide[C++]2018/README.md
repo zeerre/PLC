@@ -2995,19 +2995,19 @@ int main(){
     scanf("%c",&id);
     scanf("%f",&price);
     if(id=='V')
-	if(price<=500)
-	  discount=0.85;
-	else
-	  if(price<=1000)
-	    discount=0.8;
-	  else{
-	    discount=0.75;
-	    flag=1;
-		}
-    else{
-	discount=0.9;
-	if(price>500)
+      if(price<=500)
+	discount=0.85;
+      else
+	if(price<=1000)
+	  discount=0.8;
+	else{
+	  discount=0.75;
 	  flag=1;
+	}
+    else{
+      discount=0.9;
+      if(price>500)
+	flag=1;
     }
     if(flag)
       printf("YES");
