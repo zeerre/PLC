@@ -6,7 +6,7 @@
 # Created And Modified Time: ====2022-10-25  12-44-45====
 #########################################################################
 
-echo "Start Updating remote master.buffer branch to local,Wait..."
+echo "Start Updating remote master.amain branch to local,Wait..."
 echo
 echo
 
