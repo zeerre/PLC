@@ -2969,19 +2969,15 @@ graph TD
       ID{id==V}--YES-->Price{price<=500};
       Price--YES-->Discount(discout=0.85);
       Discount-->Output[/flag,price/];
-      Output-->End((E));
       Price--NO-->Price1{price<=1000};
       Price1--YES-->Discount1(discount=0.8);
       Discount1-->Output[/flag,price/];
-      Output-->End((E));
       Price1--NO-->Discount2(discount=0.75,flag=1);
       Discount2-->Output[/flag,price/];
-      Output-->End((E));
       ID{id==V}--NO-->Discount3(discount=0.9);
       Discount3-->Price2{price>500};
       Price2--YES-->Flag(flag=1);
       Flag-->Output[/flag,price/];
-      Output-->End((E));
       Price2--NO-->Output[/flag,price/];
       Output-->End((E));;
 
