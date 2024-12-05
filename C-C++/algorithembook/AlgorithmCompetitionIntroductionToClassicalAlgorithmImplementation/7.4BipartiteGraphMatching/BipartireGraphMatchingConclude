@@ -1,7 +1,0 @@
-samiam.cpp					二分图最大匹配；最小覆盖			UVa11419
-guardianofdecency.cpp				二分图最大独立集				POJ2771
-taxicabscheme.cpp				DAG最小路径覆盖				POJ2060
-optimalbusroutedesign.cpp			后继模型；二分图最小权匹配			UVa1349
-goldentigerclaw.cpp				KM算法；可行顶标				UVa11383
-ants.cpp					二分图最佳匹配				POJ3565
-fixedpartitionmemorymanagement.cpp		图论建模；二分图最佳匹配			UVa1006

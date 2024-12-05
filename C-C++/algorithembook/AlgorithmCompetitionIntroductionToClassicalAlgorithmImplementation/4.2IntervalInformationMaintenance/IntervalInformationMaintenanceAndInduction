@@ -1,7 +1,0 @@
-pingpong.cpp					树状数组：维护逆序对					POJ3928
-frequentvalues.cpp				RMQ							POJ3368
-raypassmethedishes.cpp				线段树：维护区间前后缀					UVa1400
-fastmatrixoperations.cpp			线段树：区间修改；懒标记传递				UVa11992
-ahoi2009.cpp（维护序列）				线段树：区间修改；乘法操作					NC19889
-nc50456.cpp	（花神游历各国）			线段树：区间修改；根号操作					NC50456
-mountains.cpp					线段树：区间修改；动态开点					SPOJNKMOU

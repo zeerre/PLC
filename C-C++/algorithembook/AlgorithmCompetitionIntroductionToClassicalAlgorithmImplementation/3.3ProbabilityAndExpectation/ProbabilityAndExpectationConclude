@@ -1,6 +1,0 @@
-probabilitygiven.cpp		离散条件概率			UVa11181
-doublepatiencedp.cpp		离散概率：DP			UVa1637
-tribbles.cpp			离散概率：递推			UVa11021
-coupons.cpp			数学期望：有理数			UVa10288
-expectthexpected.cpp		数学期望				UVa11427
-racetoone.cpp			马尔可夫过程：数学期望		UVa11762

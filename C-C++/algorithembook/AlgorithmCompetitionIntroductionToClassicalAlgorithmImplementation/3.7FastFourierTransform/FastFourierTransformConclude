@@ -1,5 +1,0 @@
-golfbotFFT.cpp						生成函数；FFT				SPOJ SWERC14C
-arithmeticprogressions.cpp				分块：计数；FFT				CodeChefCOUNTARI
-evaluatethepolynomial.cpp				NTT的DFT				CodeChefPOLYEVAL
-optimizeNTT-FFT.cpp					NTT:混合基FFT				NC208302
-xorpathFWT.cpp						FWT					UVa13277

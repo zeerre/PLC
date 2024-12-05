@@ -1,6 +1,0 @@
-boardwrapping.cpp				凸包				UVa10652
-airport.cpp					凸包；直线的一般式		UVa11168
-square.cpp					凸包；旋转卡壳			UVa1453
-mostdistantpointfromthesea.cpp			二分法；半平面交			UVa1396
-monstertrap.cpp					平面区域；图论模型		POJ2048
-findtheborder.cpp				平面区域；卷包裹法		UVa1340

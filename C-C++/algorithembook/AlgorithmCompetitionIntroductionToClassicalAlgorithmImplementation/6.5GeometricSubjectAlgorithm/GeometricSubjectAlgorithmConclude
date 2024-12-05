@@ -1,6 +1,0 @@
-affinemess.cpp				二维仿射变换；枚举			HDU3838
-compositetransformations.cpp		三维仿射变换；平面的变换			UVa12303
-theskyisthelimit.cpp			直线型的离散化				UVa1077
-nuclearplants.cpp			圆的离散化				UVa1367
-raisingtheroof.cpp			投影；离散化				UVa1065
-painter.cpp				扫描法；用BST维护扫描线			UVa1075

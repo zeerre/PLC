@@ -1,6 +1,0 @@
-glassbeads.cpp				后缀自动机				SPOJ BEADS
-newdistinctsubstrings.cpp		后缀自动机；字串统计			SPOJ SUBSTI
-longestcommonsubstring.cpp		后缀自动机；LCS				SPOJ LCS
-reincarnation.cpp			后缀自动机；子串的子串统计			HDU4622
-substrings.cpp				后缀自动机；子串统计			SPOJ NSUBSTR
-k-thoccurrence.cpp			后缀自动机；Endpos计算			HDU6704

@@ -1,4 +1,0 @@
-recurrences.cpp					线性递推关系；Q矩阵					UVa10870
-cellularautomaton.cpp				循环矩阵的乘法						POJ3150
-backtokernighanritchie.cpp			高斯消元：马尔可夫过程；实数域线性方程组			UVa10828
-square.cpp					XOR方程组						UVa11542

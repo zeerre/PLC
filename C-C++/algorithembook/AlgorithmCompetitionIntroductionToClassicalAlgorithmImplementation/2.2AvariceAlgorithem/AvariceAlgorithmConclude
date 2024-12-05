@@ -1,5 +1,0 @@
-bingpacking.cpp			贪心						UVa1149
-greed-hdu2037.cpp		贪心；选择不相交区间				HDU2037
-highway.cpp			贪心；区间选点					UVa1615
-wateringgrass.cpp		贪心；区间覆盖					UVa10382
-commandowar.cpp			贪心法求最优排列					UVa11729

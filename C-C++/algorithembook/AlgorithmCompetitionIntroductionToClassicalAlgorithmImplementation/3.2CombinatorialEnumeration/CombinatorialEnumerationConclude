@@ -1,6 +1,0 @@
-password.cpp				编码解码问题								UVa1262
-howmanypiecesofland.cpp			支持四则运算的大整数类：平面的欧拉定理；计数					UVa10213
-countroottree.cpp			有根树计数								UVa1645
-binomialcoefficients.cpp		反向计算二项式系数							UVa1649
-cheerleaders.cpp			容斥原理									UVa11806
-alwaysaninteger.cpp			多项式；差分；整除性							UVa1069

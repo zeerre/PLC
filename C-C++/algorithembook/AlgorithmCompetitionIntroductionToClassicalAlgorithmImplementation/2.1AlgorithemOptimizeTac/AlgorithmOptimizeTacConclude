@@ -1,9 +1,0 @@
-whosinthemiddle.cpp			快速选择问题					POJ2388
-subsequence.cpp				线性扫描；前缀和；单调性				UVa1121
-opencreditsystem.cpp			扫描；维护最大值					UVa11078
-calculatorconundrum.cpp			Floyd判圈					UVa11549
-4valueswhosesumiszero.cpp		中途相遇						UVa1152
-uniquesnowflakes.cpp			滑动窗口						UVa11572
-slidingwindow.cpp			滑动窗口；单调队列				POJ2823
-meteor.cpp				线性扫描；事件点处理				UVa1398
-brainman.cpp				逆序对数计算					POJ1804
