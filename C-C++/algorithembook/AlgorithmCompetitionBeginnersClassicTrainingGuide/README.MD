@@ -2024,10 +2024,10 @@ for(int i=1;i<=n;i++){
 gantt
 
 dateFormat YYYY-MM-DD
-title 开发计划
+title “”
 
-section 需求文档
-    first :done,login,2021-06-10,2021-06-21
+section “”
+    <------first------ :done,login,2021-06-10,2021-06-21
 	second: done,login,2021-06-10,2021-06-21
     third :done,login,2021-06-10,2021-06-21
 	forth: done,login,2021-06-10,2021-06-21
