@@ -2000,7 +2000,7 @@ $g\left( i \right) = \max\{-\infty,g\left( i- V_j\right)+1 | V_j\leq i\}$，
 
 * 问题4：
 
-背包问题。有n种物品，每种只有一个。第i种物品的体积为 $V_i$，重量为 $W_i$ 。选一些物品装到一个容量为C的背包，使得背包内物品在总体积不超过C的前提下重量尽量大。其中， $1\leqslant n \leqslant 100$ ，$1\leqslant V_i \leqslant C\leqslant 10000$ ， $1\leqslant W_i \leqslant 10^6$ 。
+背包问题。有n种物品，每种只有一个。第i种物品的体积为 $V_i$，重量为 $W_i$ 。选一些物品装到一个容量为C的背包，使得背包内物品在总体积不超过C的前提下重量尽量大。其中， $1\leqslant n \leqslant 100$ ，$1\leqslant V_i \leqslant C \leqslant 10000$ ， $1\leqslant W_i \leqslant 10^6$ 。
 
 * 【分析】
 
