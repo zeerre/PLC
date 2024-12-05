@@ -1,0 +1,5 @@
+threeDtriangles.cpp			线段和三角形相交			    UVa11275
+ardenia.cpp				线段之间的距离（3D）		   	 UVa1469
+asteroids.cpp				三维凸包；点到平面的距离			UVa1438
+paperweight.cpp				三维几何综合			       	UVa1100
+thegoldenceiling.cpp			三维几何；立方体切割		    	HDU4244

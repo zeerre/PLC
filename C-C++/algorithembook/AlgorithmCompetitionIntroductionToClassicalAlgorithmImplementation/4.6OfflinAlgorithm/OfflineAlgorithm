@@ -1,0 +1,6 @@
+dynamicreversepair.cpp				基于时间分治；三维偏序				NC19919
+busroutes.cpp					基于时间分治优化DP；NTT				HDU5552
+meteors.cpp					整体二分						SPOJ METEORS
+coins.cpp					整体二分；树上差分				CodeChef AMCOINS
+dquery.cpp					莫队						SPOJ DQUERY
+countcolor.cpp					带修改莫队					NC202003

@@ -1,0 +1,8 @@
+orderingtasks.cpp				拓扑排序					UVa10305
+playonwords.cpp					欧拉回路					POJ1386
+inspectorsdilemma.cpp				欧拉道路					UVa12118
+knightsoftheroundtable.cpp			点-双连通分量；二分图判定			SPOJKNIGHTS
+miningyourownbusiness.cpp			点-双联通分量；割点			SPOJBUSINESS
+provingequivalences.cpp				SCC;SCC图				HDU2767
+thelargestclique.cpp				SCC;DAG动态规划				UVa11324
+astronauts.cpp					2-SAT					UVa1391

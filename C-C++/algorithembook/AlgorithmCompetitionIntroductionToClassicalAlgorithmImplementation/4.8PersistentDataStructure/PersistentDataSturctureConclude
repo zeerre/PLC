@@ -1,0 +1,5 @@
+k-thnumber.cpp					可持久化线段树			SPOJ MKTHNUM
+tree.cpp					可持久化Trie			HDU4757
+gridsurveillance.cpp				可持久化树状树组			IPSC2011
+versioncontrolledIDE-treap.cpp			
+versioncontrolledIDE-rope.cpp			可持久化Treap			UVa12538
