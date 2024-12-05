@@ -2033,7 +2033,7 @@ $f$是从上到下、从右到左（而不是从左到右）计算的，所以�
 设 $d\left(S\right)$ 为集合S配对后的最小距离和，则
 
 $$
-d\left(S\right)=\min \{\{ d\left( S - \{\{ i \}\} - \{\{ j \}\} \right) + | P_iP_j | ~ |j \in S, j>i, i=\min \{\{ S \}\} \}}
+d \left( S \right) = \min \lbrace d \left( S - \lbrace i \rbrace - \lbrace j \rbrace \right) + | P_iP_j | ~ |j \in S, j>i, i=\min \lbrace S \rbrace \}
 $$
 
 再次强调，由于$S$中的最小元素 $i$ 无论如何都是要配对的，所以无需枚举（否则时间复杂度会多乘上一个 $n$ ）。为了进一步帮助读者理解，这里画出状态图的一部分：
