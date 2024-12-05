@@ -2020,7 +2020,18 @@ for(int i=1;i<=n;i++){
 
 它的道理蕴含在下图：
 
+```mermaid
+gantt
 
+dateFormat YYYY-MM-DD
+title 开发计划
+
+section 需求文档
+    first :done,login,2021-06-10,2021-06-21
+	second: done,login,2021-06-10,2021-06-21
+    third :done,login,2021-06-10,2021-06-21
+	forth: done,login,2021-06-10,2021-06-21
+```
 
 ## 1.5小结与习题
 
