@@ -2015,6 +2015,7 @@ memset(f,0,sizeof(f));
 for(int i=1;i<=n;i++){
 	scanf("%d%d",&V,&W);
 	for(int j=C;j>=0;j--) if(j>=V) f[j]=max(f[j],f[j-V]+W);
+}
 ```
 
 它的道理蕴含在下图：
