@@ -1988,9 +1988,9 @@ graph TD
 
 有n种硬币，面值分别为V<sub>1</sub>,V<sub>2</sub>,...,V<sub>n</sub>，每种都有无限多。给定非负整数S,可以选用多少个硬币，使得面值i值和恰好为S？输出硬币数目的最小值和最大值。其中,1 $\leqslant$ n $\leqslant$ 100,0 $\leqslant$ S $\leqslant$ 10000,1 $\leqslant$  V<sub>i</sub>  $\leqslant$ S。 ( $\leqslant$ , $\geqslant$ , $\neq$ , $\leq$ , $\geq$ , $\approx$ )。
 
-* 问题3：
+* 问题3：硬币问题。
 
-硬币问题。有n种硬币，面值分别为V<sub>1</sub>,V<sub>2</sub>,...,V<sub>n</sub>，每种都有无限多。给定非负整数S,可以选用多少个硬币，使得面值i值和恰好为S？输出硬币数目的最小值和最大值。其中,1 $\leqslant$ n $\leqslant$ 100,0 $\leqslant$ S $\leqslant$ 10000,1 $\leqslant$  V<sub>i</sub>  $\leqslant$ S。 ( $\leqslant$ , $\geqslant$ , $\neq$ , $\leq$ , $\geq$ , $\approx$ )。
+有n种硬币，面值分别为V<sub>1</sub>,V<sub>2</sub>,...,V<sub>n</sub>，每种都有无限多。给定非负整数S,可以选用多少个硬币，使得面值i值和恰好为S？输出硬币数目的最小值和最大值。其中,1 $\leqslant$ n $\leqslant$ 100,0 $\leqslant$ S $\leqslant$ 10000,1 $\leqslant$  V<sub>i</sub>  $\leqslant$ S。 ( $\leqslant$ , $\geqslant$ , $\neq$ , $\leq$ , $\geq$ , $\approx$ )。
 
 * 【分析】
 
@@ -2002,9 +2002,9 @@ $g\left( i \right) = \max\{-\infty,g\left( i- V_j\right)+1 | V_j\leq i\}$，
 
 边界条件是 : $f\left(0\right)= g\left(0\right)=0$。
 
-* 问题4：
+* 问题4：背包问题。
 
-背包问题。有n种物品，每种只有一个。第i种物品的体积为 $V_i$，重量为 $W_i$ 。选一些物品装到一个容量为C的背包，使得背包内物品在总体积不超过C的前提下重量尽量大。其中， $1\leqslant n \leqslant 100$ ，$1\leqslant V_i \leqslant C \leqslant 10000$ ， $1\leqslant W_i \leqslant 10^6$ 。
+有n种物品，每种只有一个。第i种物品的体积为 $V_i$，重量为 $W_i$ 。选一些物品装到一个容量为C的背包，使得背包内物品在总体积不超过C的前提下重量尽量大。其中， $1\leqslant n \leqslant 100$ ，$1\leqslant V_i \leqslant C \leqslant 10000$ ， $1\leqslant W_i \leqslant 10^6$ 。
 
 * 【分析】
 
