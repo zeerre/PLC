@@ -2061,6 +2061,38 @@ graph TD
 	  A--1和6配对-->B4((2,3,4,5));	  
 ```
 
+其中， $d\left(\lbrace 2,3,5,6 \rbrace \right) = \min \lbrace d\left( \brace 5,6 \rbrace \right) + |P_2 P_3| , d \left( \lbrace 3,6 \rbrace \right) + |P_2P_5|, d\left( \lbrace 3,5 \rbrace \right) + |P_2P_6| \rbrace , d\left( \lbrace 1,2,3,4,5,6 \rbrace \right) =\min \lbrace d \left( \lbrace 3,4,5,6 \rbrace \right) + |P_1P_2| , d\left( \lbrace 2,4,5,6 \rbrace \right) + |P_1P_3| , \ldots , d\left( \lbrace 2,3,4,5 \rbrace \right) |P_1P_6| \rbrace $ 。因为1必须配对，因此 $\lbrace 1,2,3,4,5,6 \rbrace$ 的这5种决策涵盖了所有情况。程序中，集合用二进制表示，在《入门经典》中已有详细描述。
+
+* 问题6：最长上升子序列问题（LIS）。
+
+给定n个整数 $A_1,A_2,\ldots,A_n$，按从左到右的顺序选出尽量多的整数，组成一个上升子序列（子序列可以理解为：删除0个或多个数，其他数的顺序不变）。比如，从序列 $1,6,2,3,7,5 $ 中，可以选出上升子序列 $1,2,3,5$ ，也可以选出 $1,6,7$ ，但前者更长。选出的上升子粗劣中相邻元素不能相等。
+
+* 分析：
+
+设 $d\left( i \right)$ 为以i结尾的最长上升子序列的长度，则 $d\left( i \right) = \max \lbrace 0,d\lbrace 0, d\left( j \right) | j < i, A_j < A_i \rbrace + 1$ ，最终答案是 $\max \lbrace d\left(i \right )\rbrace$ 。如果 LIS 中的相邻元素可以相等，把小于号改称小于等于号即可。上述算法的时间复杂度为 $O\left(n^2 \right)$ ，下面介绍一种可把时间复杂度优化到 $O\left(n\log n \right)$ 的方法。
+
+假设已经计算出的两个状态a和b满足 $A_a < A_b$ 且 $d\left(a\right)=d\left(b\right)$ ，则对于后续所有状态i（即 $i>a$ 且 $i>b$ ）来说，a并不会比b差——如果b满足 $A_a<A_i$ 的条件，a也满足，且二者的d值相同；但反过来却不一定了，a满足 $A_a<A_i$ 的条件时，b却不一定满足。换句话说，如果我们只保留a，一定不会丢失最优解。
+
+这样，对于相同的d值，只需保留A最小的一个。我们用 $g\left(i\right)$ 表示d值为i的最小状态编号（如果不存在， $g\left(i\right)$ 定义为正无穷）。根据上述推理可以证明：
+
+$$
+g\left(1\right) \leqslant g\left(2\right) \leqslant g\left(3\right) \leqslant \ldots \leqslant g\left(n\right)
+$$
+
+需要特别注意的是，上述g值时动态改变的。对于一个给定的状态i，我们只考虑在i之前以及嗯计算过的状态j（即j<i），上述g序列也是基于这些状态的。随着i的不断增大，我们要考虑的状态越来越多，g也随之发生改变。在给定状态i时，可以用二分查找得到满足 $g\left(k\right) \geqslant A_i$ 的第一个下标k，则 $d\left(i\right) = k$ ，此时 $A_i < g\left(k\right)$ ，而 $d\left(i\right) = k$ ，所以更新 $g\left(k\right)=A_i$ 。
+
+```
+for(int i=1;i<=n;i++) g[i]=INF;
+for(int i=0;i<n;i++){
+	int k=lower_bound(g+1,g+n+1,A[i]) -g;
+	d[i]=k;g[k]=A[i];
+}
+```
+
+* 问题7：最长公共子序列问题（LCS）。
+
+给出两个子序列A和B，
+
 ## 1.5小结与习题
 
 # 第二章 数学基础
