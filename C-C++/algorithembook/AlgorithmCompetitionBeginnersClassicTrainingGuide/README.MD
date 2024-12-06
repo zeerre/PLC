@@ -2091,7 +2091,35 @@ for(int i=0;i<n;i++){
 
 * 问题7：最长公共子序列问题（LCS）。
 
-给出两个子序列A和B，
+给出两个子序列A和B，求长度最大的公共子序列。比如，$1,5,2,6,8,7$ 和 $2,3,5,6,9,8,4$ 的最长公共子序列为 $2,6,8$ 或 $5,6,8$ 。
+
+* **分析：**
+
+设 $d\left(i,j\right)$ 为 $A_1,A_2,\ldots,A_i$ 和 $B_1,B_2,\ldots,B_i$ 的LCS长度，则当 $A[i]=B[j]$ 时， $d\left(i,j\right)=d\left(i-1,j-1\right)+1$ ，否则， $d\left(i,j\right)=\max \lbrace d\left(i-1,j\right),d\left(i,j-1\right)\rbrace$ 。时间复杂度为 $O\left(nm\right)$ ，其中n和m分别是序列A和B的长度。LCS问题也可以用滚动数组法进行优化。
+
+* 问题8 最大连续和。
+
+给出一个长度为n的序列 $A_1,A_2,\ldots,A_n$ ，求一个连续的子序列 $A_i,A_{i+1},\ldots,A_j$，使得元素总和 $A_i+A_{i+1}+\ldots+A_j$ 最大。
+
+* 分析：
+
+本题在《算法竞赛入门经典》中已经给出了一个利用前缀和的线性时间算法。用动态规划可以得到另一个线性算法：设 $d\left(i\right)$ 为以i结尾的最大连续和，则 $d\left(i\right)=\max \lbrace 0,d\left(i-1\right) \rbrace + A\left[i\right]$ 。
+
+* 问题9：货郎担问题（TSP）。
+
+有n个城市，两两之间均有道路直接相连。给出每两个城市i和j之间的道路长度 $L_{i,j}$ ，求一条经过每个城市一次且仅一次，最后回到起点的路线，使得经过的道路总长度最短。其中， $n\leqslant 15$ ，城市编号为 $0\backsim {n-1}$ 。
+
+* 分析： TSP是一道经典的NPC难题，不过因为本规模小，可以用动态规划求解。首先注意到可以直接规定起点和终点为城市0（？），然后设 $d\left(i,S\right)$ 表示当前在城市i，访问集合S中的城市各一次后返回城市0的最短长度，则：
+
+$$
+d\left(i,S\right)=\min\lbrace d\left(j,{S-\lbrace j\rbrace }\right) + dist \left(i,j\right)| j\in S \rbrace
+$$
+
+边界为 $d\left(i, \lbrace \rbrace \right)=dist\left(0,j\right)$ 。最终答案是 $d\left(0,\lbrace 1,2,3,\ldots,{n-1} \rbrace \right)$ ，时间复杂度为 $O\left(n^2 2^n\right)$ 。
+
+* 问题10：矩阵链乘（MCM）。
+
+
 
 ## 1.5小结与习题
 
