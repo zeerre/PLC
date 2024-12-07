@@ -3309,23 +3309,241 @@ switch(表达式){
 
 执行过程为：先计算表达式的值，然后从前往后一次与case字句中所列出的各个常量表达式的值进行比较，若表达式的值与常量中的值相等，就开始进入相应的case子句的语句组执行，遇到后续的case也不再进行判断（默认匹配），直到遇到break语句或switch语句结束。default表示表达式与所有常量表达式的值都不匹配，那么就执行其后面的语句组，通常将default放在最后。如果表达式与各分支常量表达式的值都部匹配时，不需要执行任何语句，则default可以省略。
 
-> 例1
+> 例1 阅读下面程序，思考输入“-”，则输出结果是什么？
 
-> 例2
+```
+#include<iostream>
+using namespace std;
 
-> 例3
+int main(){
+    char symbol;
+    cin>>symbol;
+    switch(symbol){
+	case '+':cout<<"+"<<endl;break;
+	case '-':cout<<"-"<<endl;break;
+	case '*':cout<<"*"<<endl;break;
+	case '/':cout<<"/"<<endl;break;
+	default:cout<<"Input Invalid"<<endl;
+    }
+    return 0;
+}
+```
 
-> 例4
+> 例2 阅读下面程序，思考输入“-”，输出结果是什么？
 
-> 例5
+```
+#include<iostream>
+using namespace std;
+int main(){
+    char symbol;
+    cin>>symbol;
+    switch(symbol){
+	case '+':cout<<"+"<<endl;
+	case '-':cout<<"-"<<endl;
+	case '*':cout<<"*"<<endl;
+	case '/':cout<<"/"<<endl;
+	default:cout<<"Input Invalid!"<<endl;
+    }
+    return 0;
+}
+```
+* 【分析】
+
+例1和例2相比，每个case字句的语句组后例2没有`break;`语句，也就不能即使跳出switch语句，所以例1和例2输出内容不一样，自行比较。
+
+**使用switch语句要注意以下几点：**
+
+	1). switch 后面的表达式，取值只能是整型数据、字符型、布尔型、枚举型。case后面的常量表达式，其值类型要与switch后面表达式的类型一致。
+	2). 任意两个case语句后的表达式值必须各不相同，否则将引起歧义。
+	3). 与剧组可以是一条语句，也可以是复合语句。
+	4). 多个case语句可以公用一组程序。（例3）
+
+> 例3 阅读程序，思考分别输入“A”，“B”，“C”，则程序输出结果是什么。
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    char ch;
+    cin>>ch;
+    switch(ch){
+	case 'A':
+	case 'B':
+	case 'C':cout<<"Pass"<<endl;break;
+    }
+    return 0;
+}
+```
+
+> 例4 优惠购物。
+
+* 【问题描述】
+
+某商场的客户分为白金卡会员、金卡会员、银卡会员和普通客户。为了回馈广大客户，现推出以下优惠活动：
+	(1). 如果客户是白金会会员，将享受7折优惠；
+	(2). 如果客户是白金会会员，将享受8折优惠；
+	(3). 如果客户是白金会会员，将享受9折优惠；
+	(4). 如果客户是普通客户，将享受9.5折优惠；
+本体的任务是根据客户的身份和购买商品的价格，给出应付金额。
+
+* 【输入格式】
+
+第一行一个字符。“P”表示白金会员，“G”表示金卡会员，“S”表示银卡会员，其他字符表示普通客户。第二行一个整数，int范围内，表示该顾客购买商品的金额。
+
+* 【输出格式】
+
+一行一个实数，保留2为小数，表示顾客应付金额。
+
+* 【输入样例】
+
+```
+G
+580
+```
+
+* 【输出样例】
+
+```
+464.00
+```
+
+* 【分析】
+
+设id表示顾客的身份，price表示顾客购买的商品金额，根据id的值来计算顾客应付金额。因为情况比较多，所以switch语句实现如下：
+
+```
+#include<cstdio>
+using namespace std;
+int main(){
+    char id;
+    float price,discount;
+    scanf("%c\n",&id);
+    scanf("%f",&price);
+    switch(id){
+	case 'P':discount=0.7;break;
+	case 'G':discount=0.8;break;
+	case 'S':discount=0.9;break;
+	default: discount=0.95;
+    }
+    printf("%f",price*discount);
+    return 0;
+}
+```
+
+> 例5 某年某月的天数。
+
+* 【问题描述】
+
+输入x和y，输出x年y月有多少天。
+
+* 【输入格式】
+
+一行两个正整数x和y，分别表示年份和月份。x在int范围内，y为 $1\sim 12$。
+
+* 【样例输入】
+
+```
+2000 3
+```
+
+* 【样例输出】
+
+```
+31
+```
+
+* 【分析】
+
+略。
+
+代码如下：
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int x,y,day;
+    cin>>x>>y;
+    switch(y){
+	case 1:	case 3:	case 5:	case 7:	case 8:	case 10:
+	case 12:day=31;break;
+	case 4:	case 6:	case 9:
+	case 11: day=30;break;
+	case 2:{
+	     day=(x%400==0?29:(x%4==0?(x%100!=0?29:28):28));
+	     break;
+	}
+    }
+    cout<<day<<endl;
+    return 0;
+}
+```
 
 ### 实践巩固
 
-1.
+1. 单词转换（numword，1s，128MB）
 
-2.
+* 【问题描述】
 
-3.
+输入十个数 $1\sim 10$ ，输出其对应的英文单词。
+
+* 【输入格式】
+
+一行一个正整数， $1\sim 10$ 之间。
+
+* 【样例输入】
+
+1
+
+* 【样例输出】
+
+One
+
+2. 小江赴约会（appointment，1s，128MB）
+
+* 【问题描述】
+
+小江的朋友小谢约他下周一起去看展览，但小江每周的1、3、5必须上课。请帮小江判断它能否接受小谢的邀请，如果能，输出“YES”；如果不能，输出“NO”。
+
+* 【输入格式】
+
+输入一行，小谢邀请小江去看展览的日期，用数字 $1\sim 7$ 表示从星期一 $\sim$ 星期日。
+
+* 【输出格式】
+
+输出一行，如果小江可以接受小谢的邀请输出“YES”，否则输出“NO”。
+
+* 【样例输入】
+
+2
+
+* 【样例输出】
+
+YES
+
+3. 简单计算器（cal，1s，128MB）
+
+* 【问题描述】
+
+一个最简单的计算器，支持 $+, -, *, /$ 这四种运算。仅须考虑输入、输出为整数的情况，数据和运算结果不会超过int范围。
+
+* 【输入格式】
+
+输入一行3个参数，3个参数之间以一个空格隔开。其中，第1、2个参数为整数，int范围以内，第3个参数为操作符（+、-、*、/）。
+
+* 【输出格式】
+
+输出一行一个整数，为运算结果。然而：
+	(1).如果出现除数为0的情况，则输出“Divided by zero”；
+	(2).如果出现无效操作符（即不是+、-、*、/），则输出“Invalid Operator”。
+
+* 【样例输入】
+
+1 2 +
+
+* 【样例输出】
+
+3
 
 ## 第七课 分支结构应用举例
 
