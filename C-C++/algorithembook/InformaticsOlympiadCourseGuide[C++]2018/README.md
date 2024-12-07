@@ -3555,7 +3555,230 @@ YES
 
 ### 知识点
 
-> 1
+> 例1 水果价格。
+
+* 【问题描述】
+
+有苹果（apples）、梨（pears）、橘子（oranges）、葡萄（grapes）4种水果，单价分别是3.00元/千克，2.50元/千克，4.10元/千克和10.2元/千克。在屏幕上显示如样例所示的菜单。当用户输入编号1～4,首先现实查询提示，然后显示相应水果单价（保留一位小数）。如果输入其他编号，则显示单价为0（无小数）。
+
+* 【输入格式】
+
+一行一个整数，0～9之间。
+
+* 【输出格式】
+
+提示信息和相应水果的单价，格式如样例输出所示。
+
+* 【样例输入】
+
+3
+
+* 【样例输出】
+
+```
+[1]apples
+[2]pears
+[3]oranges
+[4]grapes
+Price=4.1
+```
+
+* 【问题分析】
+
+代码如下：
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int x;
+    cin>>x;
+    cout<<"[1]apples"<<endl;
+    cout<<"[2]pears"<<endl;
+    cout<<"[3]oranges"<<endl;
+    cout<<"[4]grapes"<<endl;
+    cout<<"Price";
+    switch(x){
+	case 1:cout<<"3.0"<<endl;break;
+	case 2:cout<<"2.5"<<endl;break;
+	case 3:cout<<"4.1"<<endl;break;
+	case 4:cout<<"10.2"<<endl;break;
+	default:cout<<"0"<<endl;break;
+    }
+    return 0;
+}
+```
+
+> 例2 虫子吃苹果。
+
+* 【问题描述】
+
+小苏买了一箱苹果共有n个，很不幸的是箱子里混进了一条虫子。虫子每x小时能吃掉一个苹果。假设虫子在吃完一个苹果之前不会吃另一个苹果，那么经过y小时，这项苹果中还有多少个苹果没有被吃过？
+
+* 【输入格式】
+
+一行三个整数，表示n、x、y，int范围内，之间用空格隔开。
+
+* 【输出格式】
+
+一行一个整数，及所求答案。
+
+* 【样例输入】
+
+3 2 1
+
+* 【样例输出】
+
+2
+
+* 【分析】
+
+如果`y%x=0`则剩余的苹果为`n-y/x;`，否则答案为`n-y/x-1`。特殊情况是如果经过y小时虫子吃掉的苹果比n多，说明剩余苹果为0。代码如下：
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int n,x,y;
+    cin>>n>>x>>y;
+    int k=y/x;
+    if(y%x) k++;
+    if(k<=n) cout<<n-k<<endl;
+    else cout<<0<<endl;
+    return 0;
+}
+```
+
+> 例3 字符判断。
+
+* 【问题描述】
+
+键盘输入热以一个字符，判断是大写字母、小写字母还是数字。
+
+* 【输入格式】
+
+一行一个字符
+
+* 【输出格式】
+
+如果是大写字母，输出“capital”；如果输出是小写字母输出“lowercase”；如果是数字，输出“number”；其他字符输出“others”。
+
+* 【样例输入】
+
+A
+
+* 【样例输出】
+
+capital
+
+* 【分析】
+
+C++中的字符可以直接比较大小，依据就是其对应的ASCII码值。而且在ASCII码中大写字母、小写字母和数字字符都是连续编号的。所以判断字符类别可以直接进行关系运算，也可以通过它的ASCII码范围来实现。代码如下：
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    char ch;
+    cin>>ch;
+    if(ch>='A' && ch<='Z') cout<<"capital"<<endl;
+    else
+	if(ch>='a' && ch<='z') cout<<"lowercase"<<endl;
+	else
+		if(ch>='0' && ch<='9') cout<<"number"<<endl;
+		else cout<<"others"<<endl;
+    return 0;
+}
+```
+
+> 例4 随机函数。
+
+* 【问题描述】
+
+编程随机生成2个1～9之间的整数a、b，再随机生成1个1～4的整数c，1,2,3,4分别对应+、-、*、/这4个运算符号。程序输出a和b通过c所对应的运算符好组成的算术表达式及其结果。
+
+* 【输入格式】
+
+无输入。
+
+* 【输出格式】
+
+输出a和b的算术表达式及其结果，具体参照样例输出。
+
+* 【样例输出】
+
+5+3=8
+
+* 【样例说明】
+
+样例输出只是一种可能，不唯一，但是输出格式要相同。
+
+* 【分析】
+
+C++中的函数`rand()`返回 $\left[0,RAND_MAX \right]$ 之间的随机整数，其中，RAND_MAX一般为32767。但是，在调用`rand()`之前一般要先设置“随机种子”，通常可以用`srand(time(0))`来实现。函数`rand()`和`srand()`需要包含`cstdlib`头文件，函数`time()`需要包含`ctime`头文件。一般来数，产生a～b之间的随机整数可以表示为`a+rand()%(b-a+1)`。代码如下：
+
+```
+#include<cstdlib>
+#include<ctime>
+#include<cstdio>
+using namespace std;
+int main(){
+    int a,b,c;
+    srand(time(0));
+    int x=1,y=9;
+    a=x+rand()%(y-x+1);
+    b=x+rand()%(y-x+1);
+    x=1;y=4;
+    c=x+rand()%(y-x+1);
+    switch(c){
+	case 1:printf("%d+%d= %d\n",a,b,a+b);break;
+	case 2:printf("%d-%d= %d\n",a,b,a-b);break;
+	case 3:printf("%d*%d= %d\n",a,b,a*b);break;
+	case 4:printf("%d / %d= %d\n",a,b,a/b);break;
+    }
+    return 0;
+}
+```
+
+### 实践巩固
+
+1. 图形判断（rectria，1s，128MB）
+
+* 【问题描述】
+
+从键盘输入一个大写字母，如果是“J”，则下一行输入两个正整数，表示一个举行的长和宽，计算并输出该矩形的周长和面积；如果不是“J”，则下一行输入三个数，表示一个三角形的三条边边长，计算并输出该三角形的周长。
+
+* 【输入格式】
+
+输入两行，第一行为一个大写字母。
+若第一行英文字母为“J”，则第二行有两个正整数；否则第二行有三个正整数（保证能够成三角形），int范围以内。
+
+* 【输出格式】
+
+如果是矩形，则输出2个数（中间用一个空格隔开），表示矩形的周长和面积；否则输出一个数，表示三角形的周长。所有答案均在int范围内。
+
+* 【输入样例1】
+
+```
+N
+3 8 9
+```
+* 【输出样例1】
+
+```
+20
+```
+* 【输入样例2】
+
+```
+J
+3 8
+```
+* 【输出样例2】
+
+```
+22 24
+```
 
 # 第四单元 循环结构程序设计
 
