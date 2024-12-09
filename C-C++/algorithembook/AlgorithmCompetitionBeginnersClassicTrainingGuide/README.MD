@@ -2119,7 +2119,7 @@ $$
 
 * 问题10：矩阵链乘（MCM）。
 
-
+一个 $n\times n$ 矩阵有n行m列共 $n\times m$ 个数排列而成。两个矩阵A和B可以相乘的条件为：当且仅当A的列数等于B的行数。一个 $n\times m$ 的矩阵乘以一个 $m\times p$ 的矩阵等于一个 $n\times p$ 的矩阵，运算量为 $m\times n\times p$ 
 
 ## 1.5小结与习题
 
