@@ -2182,6 +2182,28 @@ graph TD
 	  F---G1((.));
 	  F---G[1];
 ```
+它的总检索次数仅为 1636 次。给定n个关键字的频率 $f_1,f_2,\ldots,f_n$ ，要求构造一颗最优的排序二叉树，使得每个关键字的频率和深度的乘积之和最小。
+
+* 分析：根据排序二叉树的递归定义，可以先选根，然后递归建立左右子树，记作 $d\left(i,j\right)$ 为符号 $i,i+1,\ldots,j$ 所建立的排序二叉树的最小检索次数。如果选根为k，总检索次数应该如何计算？
+
+树根k只需要检索一次，累加上 $f_k$ 。左子树在单独作为一棵树时，其总检索次数为 $d\left(i,{k-1}\right)$ ；但在作为k的子树后，所有节点的深度都增加了1,因此总检索次数需要加上 $f_i,f_{i+1},\ldots,f_{k-1}$ 。右子树类似。这样，若记作 $w\left(i,j\right)=f_i+f_{i+1},\ldots,f_j$ ，状态转移方程为 $d\left(i,j\right)=\max\lbrace d\left(i,{k-1}\right)+d\left({k+1},j\right)\rbrace +w\left(i,j\right)$  。状态有 $O\left(n^2\right) 个，每个状态的决策有 $O\left(n\right)$ 个，总时间复杂度为 $O\left(n^3\right)$ 。
+
+有一个方法可以把时间复杂度降为 $O\left(n^2\right)$ 。记作 $K\left(i,j\right)$ 为让 $d\left(i,j\right)$ 取到最小值的决策，则可以证明 $K\left(i,j\right) \leqslant K\left(i,{j+1}\right) \leqslant K\left({i+1},{j+1}\right) \left(i  \leqslant j\right)$  ，即K在同行和同列上都是递增的。证明需要用到四边形不等式，这里略去，有兴趣的可以自行查阅相关资料。
+
+有了这个结论，我们在计算 $d\left(i,j\right)$ 时，只需要把决策枚举从 $i\sim j$ 改成从 $K\left(i,{j-1}\right) \sim K\left({i+1},j\right)$ 即可。注意到后面两个状态都在 $d\left(i,j\right)$ 只需要把决策枚举从 $i\sim j$ 改成从 $K\left(i,{j-1}\right)\sim K\left({i+1},j\right)$ 已经得到。
+
+下面分析时间复杂度。当 $L=j-i$ 固定时，
+
+$d\left(1,{L+1}\right)$ 的决策是 $K\left(1,L\right)\sim K\left(2,{L+1}\right)$ <br>
+$d\left(2,{L+2}\right)$ 的决策是 $K\left(2,{L+1}\right)\sim K\left(3,{L+2}\right)$ <br>
+$d\left(3,{L+3}\right)$ 的决策是 $K\left(3,{L+2}\right)\sim K\left(4,{L+3}\right)$ <br>
+$\ldots$
+
+全部合并起来，当L固定时的总决策为 $K\left(1,L\right)\sim K\left({n-L+1},n\right)$ ，共 $O\left(n\right)$ 个。由于L有 $O\left(n\right)$ 个，总时间复杂度降为 $O\left(n_2\right)$ 。
+
+> 例题26 约瑟夫问题的变形（And Then There Was One，Japan 2007，LA3882）
+
+n个数拍成一个圈。第一次删除m，以后每数k个数删除一次，求最后被删除的数。当 $n=8,k=5,m=3$ 时，删数过程：
 
 ## 1.5小结与习题
 
