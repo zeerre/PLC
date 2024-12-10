@@ -2119,7 +2119,69 @@ $$
 
 * 问题10：矩阵链乘（MCM）。
 
-一个 $n\times n$ 矩阵有n行m列共 $n\times m$ 个数排列而成。两个矩阵A和B可以相乘的条件为：当且仅当A的列数等于B的行数。一个 $n\times m$ 的矩阵乘以一个 $m\times p$ 的矩阵等于一个 $n\times p$ 的矩阵，运算量为 $m\times n\times p$ 
+一个 $n\times n$ 矩阵有n行m列共 $n\times m$ 个数排列而成。两个矩阵A和B可以相乘的条件为：当且仅当A的列数等于B的行数。一个 $n\times m$ 的矩阵乘以一个 $m\times p$ 的矩阵等于一个 $n\times p$ 的矩阵，运算量为 $m\times n\times p$ 。
+
+矩阵乘法不满足分配律，但满足结合律，因此 $A\times B\times C$ 既可以按顺序 $\left(A\times B\right) \times C$ 进行，也可以按 $A\times \left(B\times C\right)$ 来进行。假设 $A\, B\, C$ 分别是 $2\times 3$ , $3\times 4$ 和 $4\times 5$ 矩阵，则 $\left(A\times B\right)\times C$ 的运算量为 $2\times 3\times 4 + 2\times 4\times 5 =64$ ， $A\times\left(B\times C\right)$ 的运算量为 $3\times 4\times 5 + 2\times 3\times 5 =90$ 。显然，第一种运算顺序更节省运算量。
+
+给出n个矩阵组成的序列，设计一种方法把它们依次相乘，使得总运算量最小。假设第i个矩阵 $A_i$ 是 $P_{i-1}\times P_i$ 的。
+
+* 分析：设 $f\left(i,j\right)$ 表示把 $A_i,A_{i+1},\ldots,A_j$ ，乘起来所需要的乘法次数，枚举“最后一次乘法”是第k个乘号，则 $f\left(i,j\right) = \max\lbrace f\left(i,k\right)+f\left({k+1},j\right)+p_{i-1}p_kp_j\rbrace$ ，边界是 $f\left(i,i\right) = 0$ ，时间复杂度为 $O\left(n^3\right)$ 。
+
+* 问题11：最优排序二叉树问题（OBST） 。给n个符号建立一棵排序二叉树。虽然平衡树的高度最小，但如果各个符号的频率相差很大，平衡反而不好。比如，若有7个符号 ABCDEFG ,频率分别为 729,243,81,27,9,3,1，如下图，则下面的平衡树的总检索次数（即所有关键字频率和深度的乘积之和）为 $27\times 1+\left(243+3\right)\times 2 + \left(729+81+9+1\right)\times 3=2979$ 。
+
+```mermaid
+graph TD
+	  A[D]---B[B];
+	  B---C[A];
+	  B---D[C];
+	  A---E[F];
+	  E---G[E];
+	  E---H[G];
+```
+和
+```mermaid
+graph TD
+	  A[27]---B[243];
+	  B---C[729];
+	  B---D[81];
+	  A---E[3];
+	  E---F[9];
+	  E---G[1];
+```
+
+相比之下，下图的链状树反而好的多。
+
+```mermaid
+graph TD
+	  A[A]---B[B];
+	  A---B1((.));
+	  B---C[C];
+	  B---C1((.));
+	  C---D[D];
+	  C---D1((.));
+	  D---E[E];
+	  D---E1((.));
+	  E---F[F];
+	  E---F1((.));
+	  F---G[G];
+	  F---G1((.));
+```
+和
+```mermaid
+graph TD
+	  A[729]---B[243];
+	  A---B1((.));
+	  B---C[81];
+	  B---C1((.));
+	  C---D[27];
+	  C---D1((.));
+	  D---E[9];
+	  D---E1((.));
+	  E---F[3];
+	  E---F1((.));
+	  F---G[1];
+	  F---G1((.));
+```
 
 ## 1.5小结与习题
 
