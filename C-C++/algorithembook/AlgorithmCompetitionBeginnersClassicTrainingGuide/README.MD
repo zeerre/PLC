@@ -2199,7 +2199,7 @@ $d\left(2,{L+2}\right)$ 的决策是 $K\left(2,{L+1}\right)\sim K\left(3,{L+2}\r
 $d\left(3,{L+3}\right)$ 的决策是 $K\left(3,{L+2}\right)\sim K\left(4,{L+3}\right)$ <br>
 $\ldots$
 
-全部合并起来，当L固定时的总决策为 $K\left(1,L\right)\sim K\left({n-L+1},n\right)$ ，共 $O\left(n\right)$ 个。由于L有 $O\left(n\right)$ 个，总时间复杂度降为 $O\left(n_2\right)$ 。
+全部合并起来，当L固定时的总决策为 $K\left(1,L\right)\sim K\left({n-L+1},n\right)$ ，共 $O\left(n\right)$ 个。由于L有 $O\left(n\right)$ 个，总时间复杂度降为 $O\left(n^2\right)$ 。
 
 > 例题26 约瑟夫问题的变形（And Then There Was One，Japan 2007，LA3882）
 
