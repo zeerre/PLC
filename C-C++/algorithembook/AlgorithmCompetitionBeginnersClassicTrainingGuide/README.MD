@@ -2206,12 +2206,12 @@ $\ldots$
 n个数拍成一个圈。第一次删除m，以后每数k个数删除一次，求最后被删除的数。当 $n=8,k=5,m=3$ 时，删数过程：
 
 ```mermaid
-graph LR
+graph TD
 	  subgraph InitialState
 	  A[1,2,3,4,5,6,7,8]
 	  end
 	  subgraph Step1
-	  B[1,2,((3)),4,5,6,7,8]
+	  B[1,2, $\otimes$ ,4,5,6,7,8]
 	  end
 ```
 
