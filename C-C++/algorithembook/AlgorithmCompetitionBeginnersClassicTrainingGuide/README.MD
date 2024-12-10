@@ -2214,25 +2214,25 @@ graph LR
 	  B[1 2  -  4 5 6 7 8]
 	  end
 	  subgraph Step2
-	  B[1 2  .  4 5 6 7 -]
+	  C[1 2  .  4 5 6 7 -]
 	  end
 	  subgraph Step3
-	  B[1 2  .  4 5 - 7 .]
+	  D[1 2  .  4 5 - 7 .]
 	  end
 	  subgraph Step4
-	  B[1 2  .  4 - . 7 .]
+	  E[1 2  .  4 - . 7 .]
 	  end
 	  subgraph Step5
-	  B[1 2  .  4 . . - .]
+	  F[1 2  .  4 . . - .]
 	  end
 	  subgraph Step6
-	  B[1 -  .  4 . . . .]
+	  G[1 -  .  4 . . . .]
 	  end
 	  subgraph Step7
-	  B[1 .  .  - . . . .]
+	  H[1 .  .  - . . . .]
 	  end
 	  subgraph FinalState
-	  B[1 .  .  . . . . .]
+	  I[1 .  .  . . . . .]
 	  end
 ```
 
