@@ -2236,6 +2236,10 @@ graph LR
 	  end
 ```
 
+* 【输入格式】
+
+输入包含多组数据。每组数据包含3个整数n，k，m(2 $\leqslant$ n $\leqslant $ 10000, 1 $\leqslant $ k $\leqslant $ 10000 ， 1 $\leqslant$ m $\leqslant$  n) 。输入结束标志为 n=k=m=0。
+
 ## 1.5小结与习题
 
 # 第二章 数学基础
