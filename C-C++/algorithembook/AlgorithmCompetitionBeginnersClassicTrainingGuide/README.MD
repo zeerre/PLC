@@ -2281,7 +2281,48 @@ int main(){
 
 * 【分析】
 
-本题是 LCS 问题，但因为p和q可以高达 $250^2=62500 , O\left(pq\right)$ 的算法显然太慢了。注意到所有
+本题是 LCS 问题，但因为p和q可以高达 $250^2=62500 , O\left(pq\right)$ 的算法显然太慢了。注意到序列中所有元素都不相同，因此可以把A中元素重新编号为 $1\sim p+1$ 。例如，样例中 $A=\lbrace 1,7,5,4,8,3,9 \rbrace , B=\lbrace 1,4,3,5,6,2,8,9 \rbrace$ ，因此把A重新编号为 $\lbrace 1,2,3,4,5,6,7\rbrace$  ，则B就是 $\lbrace 1,4,6,3,0,0,5,7\rbrace$ ，其中0表示A中没有出现过（事实上，可以直接删除这些元素，因为它们肯定不再LCS中）。这样，新的A和B的LCS实际上就是新的B的LIS。由于LIS可在 $O\left(n\log n\right)$  时间内解决，因此本题也可以在 $O\left(n\log n\right)$ 时间内得到解决。代码如下：
+
+```
+#inlclude<cstdio>
+#include<cstring>
+#include<algorithm>
+
+using namespace std;
+const int maxn =250*250;
+const int INF=1000000000;
+int S[maxn],g[maxn],d[maxn];
+int num[maxn];
+int main(){
+	int T;
+	scanf("%d",&T);
+	for(int kase=1;kase<=T;kase++){
+		int N,p,q,x;
+		scanf("%d%d%d",&N,&p,&q);
+		memset(num,0,sizeof(num));
+		for(int i=1;i<=p+1;i++) {scanf("%d",&x); num[x]=i;}
+		int n=0;
+		for(int i=0;i<q+1;i++) { scanf("%d",&x);if(num[x]) S[n++]=num[x];}
+		//求解 S[0] ... S[n-1] 的LIS
+		for(int i=1;i<n;i++){
+			int k=lower_bound(g+1,g+n+1,S[i])-g;
+			d[i]=k;
+			g[k]=S[i];
+			ans=max(ans,d[i]);
+		}
+		printf("Case %d: %d\n",kase,ans);
+	}
+	return 0;
+}
+```
+
+> 例题28 Sum游戏 （Game of Sum，UVa10891）
+
+有一个长度为n的整数序列，两个游戏者A和B轮流取数，A先取。每次玩家只能从左端或者右端取任意数量个数，但不能两端都取。所有数都被取走后游戏结束，然后统计每个人取走的所有数之和，作为各自的得分。两个人采取的策略都是让自己的的分尽量高，并且两个人都足够聪明，求A的得分减去B的得分后的结果。
+
+* 【输入格式】
+
+
 
 ## 1.5小结与习题
 
