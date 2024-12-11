@@ -2238,7 +2238,23 @@ graph LR
 
 * 【输入格式】
 
-输入包含多组数据。每组数据包含3个整数 $n，k，m\left(2 \leqslant n \leqslant  10000, 1 \leqslant  k \leqslant  10000 ， 1 \leqslant m \leqslant  n\right)$ 。输入结束标志为 n=k=m=0。
+输入包含多组数据。每组数据包含3个整数 $n，k，m\left(2 \leqslant n \leqslant  10000, 1 \leqslant  k \leqslant  10000 ， 1 \leqslant m \leqslant  n\right)$ 。输入结束标志为 $n=k=m=0$ 。
+
+* 【输出格式】
+
+对于每组数据，输出最后一个被删除的数。
+
+* 【分析】
+
+本题是约瑟夫问题的变种，唯一的区别就是：原版问题中，从1开始数数，而在本题中，规定第一个删除的数是 m。约瑟夫问题作为链表的经典应用，出现在很多数据结构与程序设计语言的书籍中。可惜链表法的时间复杂度为 $O\left(nk\right)$ ，无法承受本题这样大的规模。如果像本题这样只关心最后一个被删除的编号，而不需要完整的删除顺序，则可以用递推法求解。假设编号为 $0\sim n-1 $ 的n个数排成一圈，从0开始每 k 个数删除一个，最后留下的数字编号记为 $f\left(n\right) $ ，则 $f\left(1\right)=0,f\left(n\right)= \left(f\left({n-1}\right)+k\right) % n$ 。因为删除一个元素之后可以把所有元素重新编号，如下图：
+
+```mermaid
+graph TD
+	  subgraph (p+k)%n
+	  -->A((0))----B((1));
+	  B----C((2));
+	  C----D((3));
+```
 
 ## 1.5小结与习题
 
