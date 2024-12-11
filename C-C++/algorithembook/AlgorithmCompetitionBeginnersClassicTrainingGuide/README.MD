@@ -2322,7 +2322,140 @@ int main(){
 
 * 【输入格式】
 
+输入包含多组数据。每组数据的第一行为正整数 $n\left(1\leqslant n \leqslant 100\right)$ ，第二行为给定的整数序列。输入结束标志为 n=0。
 
+* 【输出格式】
+
+对于每组数据，输出A和B都采取最优策略的情况下，A的得分减去B的得分后的结果。
+
+* 【分析】
+
+整数的总和是一定的，所以一个人得分越高，另一个人的得分就越低。不管怎么取，任意时刻游戏的状态都是原始序列的一段连续子序列（即被两个玩家取剩下的序列）。因此，我们想到用 $d\left(i,j\right)$ 表示元序列的第 $i\sim j$ 个元素组成的子序列（元素编号为 $1\sim n$ ），在双方都采取最优策略的情况下，先手得分的最大值（只考虑 $i\sim j$ 这些元素）。
+
+状态转移时，我们需要枚举从左边取还是从右边取以及取多少个。这等价于枚举给对方剩下怎样的子序列：是 $\left(k,j\right) \left(i\lt k \leqslant j\right)$ ，还是 $\left(i,k\right) \left(i\leqslant k\lt j\right)$ 。因此：
+
+$$
+d\left(i,j\right) = sum \left(i,j\right) - \min\lbrace d\left({i+1},j\right),d\left({i+2},j\right),\ldots ,d\left(j,j\right),d\left(i,{j-1}\right),d\left(i,{j-2}\right),\ldots,d\left(i,i\right),0\rbrace
+$$
+
+其中， $sum(i,j)$ 是元素i 到元素j的数值和。注意，这里的“0”是“取完所有数”的决策，有了它，方程就不需要显式的边界条件了。
+
+两人得分之和为 $sum(1,n)$ 因此答案是 $d(1,n)-(sum(1,n)-d(1,n))=2d(1,n)-sum(1,n)$ 。注意， $sum(i,j)$ 的计算不需要循环累加，可以预处理 $S[i]$ 为前i个数之和，则 $sum(i,j)=S[j]-S[i-1]$ 。下面是完整代码。采用了记忆化搜索的方式，显得更加自然。
+
+```
+#include<cstdio>
+#include<cstring>
+#inlcude<algorithm>
+
+using namespace std;
+int const maxn =100+10;
+int S[maxn],A[maxn],d[maxn][maxn],vis[maxn][maxn],n;
+
+int dp(int i,int j){
+	if(vis[i][j]) return d[i][j];
+	vis[i][j]=1;
+	int m=0;
+	for(int k=i+1;k<j;k++) m=min(m,dp(k,j));
+	for(int k=i;k<j;k++) m=min(m,dp(i,k));
+	d[i][j]=S[j]-S[i-1]-m;
+	return d[i][j];
+}
+int main(){
+	while(scanf("%d",&n)&&n){
+		S[0]=0;
+		for(int i=1;i<=n;i++){scanf("%d",&A[i]);S[i]=S[i-1]+A[i];}
+		memset(vis,0,sizeof(vis));
+		printf("%d\n",2*dp(i,n)-S[n]);
+	}
+	return 0;
+}
+```
+
+状态有 $O(n^2)$ ，每个状态有 $O(n)$ 个转移，所以时间复杂度为 $O(n^3)$ ,空间复杂度为 $O(n^2)$ 。对于本题的规模，这样的时间复杂度已经不错了，但其实还可以进一步改进。让我们回顾一下状态转移方程：
+
+$$
+d(i,j)=sum(i,j)-min\lbrace d(i+1,j),d(i+2,j),\ldots,d(j,j),d(i,j-1),d(i,j-2),\ldots,d(i,i),0\rbrace
+$$
+
+如果令 $f(i,j)=\min\lbrace d(i,j),d(i+1,j),\ldots,d(i,j) \rbrace, g(i,j)=\min\lbrace d(i,j),d(i+1,j),\ldots,d(i,i)\rbrace$ ,则状态转移方程可以写成：
+
+$$
+d(i,j)=sum(i,j)-\min\lbrace f({i+1},j),g(i,{j-1}),0\rbrace
+$$
+
+$f$ 和 $g$ 也可以快速递推出来： $f(i,j)= \min\lbrace d(i,j),f({i+1},j)\rbrace ,g(i,j)=\min\lbrace d(i,j),g(i,{j-1})\rbrace$ ，因此每个 $f(i,j)$ 的计算时间都降为了 $O(1)$ 。下面用递推（而非记忆化搜索）的方法编写。代码如下：
+
+```
+for(int i=1;i<=n;i++) f[i][i]=g[i][i]=d[i][i]=A[i];
+for(int L=1;L<n;L++)
+	for(int i=1;i+L<=n;i++){
+		int j=i+L;
+		int m=0;
+		m=min(m,f[i+1][j]);
+		m=min(m,g[i][j-1]);
+		d[i][j]=S[j]-S[i-1]-m;
+		f[i][j]=min(d[i][j],f[i+1][j]);
+		g[i][j]=min(d[i][j],g[i][j-1]);
+	}
+	printf("%d\n",2*d[1][n]-S[n]);
+```
+
+新算法的时间复杂度为 $O(n^2)$ 。
+
+> 例题29 黑客的攻击（Hacker`s Crackdown，UVa11825）
+
+假设你是一个黑客，侵入一个有着n台计算机（编号为 $0,1,\ldots,n-1$ ）的网络。一共有n中服务，每台计算机都运行着所有服务。对于每台计算机，你都可以选择一项服务，终止这台计算机和所有于它相邻计算机的该项服务（如果其中一些服务已经停止，则这些服务继续处于停止状态）。你的目标是让尽量多的服务完全瘫痪（即：没有任何计算机运行该项服务）。
+
+* 【输入格式】
+
+输入包含多组数据。每组数据的第一行为整数 $n(1\leqslant n\leqslant 16)$ ；以下n行每行描述一台计算机的相邻计算机，其中第一个数m为相邻计算机个数，接下来m个整数为这些计算机的编号。输入结束标志为 n=0。
+
+* 【输出格式】
+
+对于每组数据，数出完全瘫痪的服务器的最大数量。
+
+*  【分析】
+
+本题的数学模型是：把n个集合 $P_1,P_2,\ldots,P_n$ 分成尽量多组，使得每组中所有集合的并集等于全集。这里的集合 $P_i$ 就是计算机i及其相邻计算机的集合，每组对应于题目中的一项服务。注意到n很小，可以用《算法竞赛入门经典》中提到的二进制法表示这些集合，即在代码中，每个集合 $P_i$ 实际上是一个非负整数。输入部分代码如下：
+
+```
+for(int i=0;i<n;i++){
+	int m,x;
+	scanf("%d",&m);
+	P[i]=1<<i;
+	while(m--){scanf("%d",&x);P[i] |=(1<<x);}
+}
+```
+
+为了方便，我们用 `cover(S)`表示若干 $P_i$ 的集合 S 中所有 $P_i$ 的并集（二进制表示），即这些 $P_i$ 在数值上的“按位或”。
+
+```
+for(int S=0;S<(1<<n);S++){
+	cover[S]=0;
+	for(int i=0;i<n;i++)
+		if(S&(1<<i)) cover[S] |=P[i];
+}
+```
+
+不难想到这样的动态规划：用 $f(S)$ 表示子集 S最多可以分成多少组，则：
+
+$$
+f(S)=\max\lbrace f(S-S_0) |  \text{ $S_0$ 是S的子集，cover[ $S_0$ ]等于全集}\rbrace +1
+$$
+
+这里有一个重要的技巧：枚举S的子集 $S_0$ 。详见如下代码：
+
+```
+f[0]=0;
+int ALL=(1<<n)-1;
+for(int S=1;s<(1<<n);S++){
+	f[S]=0;
+	for(int S0=S;S0;S0=(S0-1)&S)
+		if(cover[S0]==ALL) f[S]=max(f[S],f[S^S0]+1);
+	}
+	printf("Case %d: %d\n",++kase,f[ALL]);
+}
+```
 
 ## 1.5小结与习题
 
