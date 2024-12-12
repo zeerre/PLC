@@ -2452,9 +2452,6 @@ for(int S=1;s<(1<<n);S++){
 	f[S]=0;
 	for(int S0=S;S0;S0=(S0-1)&S)
 		if(cover[S0]==ALL) f[S]=max(f[S],f[S^S0]+1);
-	}
-	printf("Case %d: %d\n",++kase,f[ALL]);
-}
 ```
 
 ## 1.5小结与习题
