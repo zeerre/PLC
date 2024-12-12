@@ -2508,7 +2508,72 @@ int dp(int i,int j,int f){
 			ans+=dp(adj[i][k],1,i);
 	if(!j && f>=0) ans++;
 	if(j||f<0){
+		int sum=0;
+		for(int k=0;i<adj[i].size();k++)
+			if(adj[i][k]!=f)
+				sum+=dp(adj[i][k],0,i);
+		if(f>=0) sum++;
+		ans=min(ans,sum);
+	}
+	return ans;
+}
+int main(){
+	int T,a,b;
+	scanf("%d",&T);
+	while(T--){
+		scanf("%d%d",&n,&m);
+		for(int i=0;i<n;i++) adj[i].clear();
+		for(int i=0;i<m;i++){
+			scanf("%d%d",&a,&b);
+			adj[a].push_back(b);
+			adj[b].push_back(a);
+		}
+		memset(vis,0,sizeof(vis));
+		int ans=0;
+		for(int i=0;i<n;i++)
+			if(!vis[i][0])
+				ans+=dp(i,0,-1);
+		printf("%d %d %d\n",ans/2000,m-ans%2000,ans%2000);
+	}
+	return 0;
+}
 ```
+
+> 例题31 捡垃圾的机器人（Robotruck，SWERC2007,LA3983）
+
+有n个垃圾，第i个垃圾的坐标为 $(x_i,y_i)$ ，重量为 $w_i$ 。有一个机器人，要按照编号从小到大的顺序捡起所有垃圾并扔进垃圾桶（垃圾桶在原点（0,0））。机器人可以捡起几个垃圾以后一起扔掉，但任何时候其手中的垃圾总重量不能超过最大载重C。两点间的行走距离为曼哈顿距离（即横坐标之差的绝对值加上纵坐标之差的绝对值）。求出机器人行走的最短总路程（一开始，机器人在（0,0）处）。
+
+* 【输入格式】
+
+输入的第一行位数据组数。每组数据的第一行为最大承重 $C(1\leqslant C\leqslant 100) $ ，第二行为正整数 $n(1\leqslant n\leqslant 100000)$ ，即垃圾的数量；以下n行每行为两个非负整数x，y和一个正整数w，即坐标和重量（重量保证不超过C）。
+
+* 【数处格式】
+
+对于每组数据，数处总路径的最短长度。
+
+* 【分析】
+
+如果把“当前垃圾序号”和当前载重量“作为状态，则状态个数就已经高达 $O(NC)$ ，不管怎样优化状态转移，时间也无法承受。迫不得已，我们只得设 $d(i)$ 为从原点出发、将前i个垃圾清理完并放进垃圾桶的最小距离，则
+
+$$
+d[i]=\min\lbrace d[j] + dist2origin(j+1) + dist({j+1},i)+dist2origin(i) | j\leqslant i, w({j+1},i) \leqslant C\rbrace
+$$
+
+其中，dist(j+1,i) 表示从第j+1个垃圾出发，依次经过垃圾j+2,垃圾j+3, $\ldots$ ，最终到达垃圾i的总距离， dist2origin(i) 表示垃圾i到原点的距离 （即 $|x_i|+|y_i|$ ），w(i,j)表示第 $i\sim j$ 个垃圾的总重量。
+
+设 total_dist(i) 为从第1个垃圾开始，依次经过垃圾2,3, $ldots$ ，最终到达垃圾i的总距离，则 $dist({j+1},i)=total\_dist(i)-total\_dist(j+1)$ 。这样上式可以改写成：
+
+$$
+d[i]=\min\lbrace d[j]-total\_dist(j+1)+dist2origin(j+1) | w({j+1},i)\leqslant C\rbrace +total\_dist(i)+dist2origin(i)
+$$
+
+如果令 $func(j)=d[j]-total\_dist(j+1)+dist2origin(j+1)$ ，上式还可以进一步简化为：
+
+$$
+d[i]=\min\lbrace func(j)|w({j+1},i)\leqslant C\rbrace +total\_dist(i)+dist2origin(i)
+$$
+
+其中，阴影部分的问题的关键。
 
 ## 1.5小结与习题
 
