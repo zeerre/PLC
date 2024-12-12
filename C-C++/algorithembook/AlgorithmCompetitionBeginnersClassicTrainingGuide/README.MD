@@ -2561,16 +2561,16 @@ $$
 
 其中，dist(j+1,i) 表示从第j+1个垃圾出发，依次经过垃圾j+2,垃圾j+3, $\ldots$ ，最终到达垃圾i的总距离， dist2origin(i) 表示垃圾i到原点的距离 （即 $|x_i|+|y_i|$ ），w(i,j)表示第 $i\sim j$ 个垃圾的总重量。
 
-设 total_dist(i) 为从第1个垃圾开始，依次经过垃圾2,3, $ldots$ ，最终到达垃圾i的总距离，则 $dist({j+1},i)=total\_dist(i)-total\_dist(j+1)$ 。这样上式可以改写成：
+设 total_dist(i) 为从第1个垃圾开始，依次经过垃圾2,3, $ldots$ ，最终到达垃圾i的总距离，则 $dist({j+1},i)=total\_ dist(i)-total\_ dist(j+1)$ 。这样上式可以改写成：
 
 $$
-d[i]=\min\lbrace d[j]-total\_dist(j+1)+dist2origin(j+1) | w({j+1},i)\leqslant C\rbrace +total\_dist(i)+dist2origin(i)
+d[i]=\min\lbrace d[j]-total\_ dist(j+1)+dist2origin(j+1) | w({j+1},i)\leqslant C\rbrace +total\_ dist(i)+dist2origin(i)
 $$
 
-如果令 $func(j)=d[j]-total\_dist(j+1)+dist2origin(j+1)$ ，上式还可以进一步简化为：
+如果令 $func(j)=d[j]-total\_ dist(j+1)+dist2origin(j+1)$ ，上式还可以进一步简化为：
 
 $$
-d[i]=\min\lbrace func(j)|w({j+1},i)\leqslant C\rbrace +total\_dist(i)+dist2origin(i)
+d[i]=\min\lbrace func(j)|w({j+1},i)\leqslant C\rbrace +total\_ dist(i)+dist2origin(i)
 $$
 
 其中，阴影部分的问题的关键。
