@@ -2569,9 +2569,173 @@ d[i]=min $\lbrace$ d[j]-total_dist(j+1)+dist2origin(j+1) | w(j+1,i) $\leqslant$ 
 
 d[i]=min $\lbrace$ func(j)|w(j+1,i) $\leqslant$ C $\rbrace$ +total_dist(i)+dist2origin(i)
 
-其中，阴影部分的问题的关键。
+其中，阴影部分是问题的关键。注意到满足 $w({j+1},i) \leqslant C$ 的所有j形成一个区间，而且随着i的增大，这个区间会往右移动（因为所有 $w_i$ 均为正数），我们常常把这个区间成为滑动窗口，则问题就转化为：维护一个滑动窗口中的最小值。
+
+当滑动窗口的有边界增大时，相当于往滑动窗口里添加新元素；当滑动窗口的左边界增大时，相当于往滑动窗口里删除元素。这样，我们可以用一个数据结构维护滑动窗口，要求支持插入、删除、取最小值。在学习完本书的数据结构部分后，相信读者能够找到一个合适的数据结构，在 $O(\log n)$ 时间内完成上述3种操作。但其实这并不是最高效的方法。
+
+假设滑动窗口中有两个元素1和2,且1在2的右边，会怎么样？这意味着2在离开窗口之前一直会被1给“压迫着”，永远不可能成为最小值。换句话说，这个2时无用的，应当及时删除。砀山除掉无用元素之后，滑动窗口中剩下的东西（有用元素）从左到右时递增的。我们把这些元素堪称一个队列，每次有新元素进来时，需要删除所有比新元素大的元素。
+
+还需要及时把不在滑动窗口范围之内的元素移出队列。读者可能会问，如果老是要删除很多元素怎么办，时间复杂度会不会很差？不会的，因为每个元素最多被删除一次，所以总时间复杂度仍是 $O(n)$ 。
+
+```
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+
+const int maxn 100000+10;
+int x[maxn],y[maxn];
+int total_dist[maxn],total_weight[maxn],dist2origin[maxn];
+int q[maxn],d[maxn];
+
+int func(int i){
+	return d[i]-total_dist[i+1]+dist2origin[i+1];
+}
+int main(){
+	int T,c,n,w,front,rear;
+	scanf("%d",&T);
+	while(T--){
+		scanf("%d%d",&c,&n);
+		total_dist[0]=total_weight[0]=x[0]=y[0]=0;
+		for(int i=1;i<=n;i++){
+			scanf("%d%d%d",&x[i],&y[i],&w);
+			dist2origin[i]=abs(x[i])+abs(y[i]);
+			total_dist[i]=total_dist[i-1]+abs(x[i]-x[i-1])+abs(y[i]-y[i-1]);
+			total_weight[i]=total_weight[i-1]+w;
+		}
+		front=rear-1;
+		for(int i=1;i<=n;i++){
+			while(front<=rear && total_dist[i]-total_weight[q[front]]>c)
+				front++;
+				d[i]=func(q[front]) + total_dist[i]+dist2origin[i];
+				while(front<=rear && func(i)<=func(q[rear])) rear--;
+				q[++rear]=i;
+		}
+		pritnf("%d\n",d[n]);
+		if(T>0) printf("\n");
+	}
+	return 0;
+}
+```
+
+> 例题32 分享巧克力（Sharing Chocolate，World Finals2010,LA4794）
+
+给出一块长为x，宽为y的矩形巧克力，每次操作可以沿一条直线把一块巧克力g切割成两块长宽均为整数的巧克力（一次不能同时切割多块巧克力）。
+
+问：是否可以经过若干次操作得到n快面积分别为 $a_1,a_2,\ldots,a_n$ 的巧克力。可以把 3 $\times$ 4 的巧克力切成面积分别为 6，3 ，2 ，1的4块。
+
+* 【输入格式】
+
+输入包含若干组数据。每组数据的第一行为一个整数n (1 $\leqslant n\leqslant 15$) ；第二行为两个整数x和y $(1\leqslant x,y\leqslant 100)$ ；第三行为n个整数 $a_1,a_2,\ldots,a_n$ 。输入标志为n=0。
+
+* 【输出格式】
+
+对于每组数据，如果可以切割成功，输出 “YES”，否则输出 “NO“ 。
+
+* 【分析】
+
+注意到n的规模很小，可以把与n有关的子集作为动态规划状态的一部分。设 $f(r,c,S)$ 表示r行c列的巧克力是否可以切割成面积集合S。样例1的答案为 Yes，即 $f(3,4,\lbrace 6,3,2,1\rbrace )=1$  。第一刀把巧克力切成 $3\times 3$ 和 $3\times 1$ 两块，即 $f(3,3,\lbrace 6,2,1\rbrace) =f(3,1,\lbrace 3\rbrace )=1$  。
+
+不难得到下面的状态转移规则： $f(r,c,S)=1$ 当且仅当
+
+* 存在 $1\leqslant r_0\lt r $ 的子集 $S_0$ ,使得 $f(r_0,c,S_0)=f({r-r_0},c,{S-S_0}) =1$ ，或者
+
+* 存在 $1\leqslant c_0\lt c $ 的子集 $S_0$ ,使得 $f(r,c_0,S_0)=f(r,{c-c_0},{S-S_0}) =1$ 。
+
+前者对应横着切，后者对应竖着切。状态有 $O(xy2^n)$ 个，每个状态转移到 $O(x+y)$ 个状态，总时间复杂度为 $O((x+y)xy2^n) $  ，有些偏大。
+
+其实，上述状态有些浪费。如果 $r\times c$ 不等于S中所有元素之和（记为sum(S)），显然 $f(r,c,S)=0$  。换句话说，我们可以只计算 $r \times c =sum(S)$ 的状态 $f(r,c,S)$  另外， $f(r,c,S)=f(c,r,S) $ ,所以不妨设 $r\leqslant c$  ，然后用 g(r,S) 代替 $f(r,c,S)$  。这样，状态降为了 $O(x2^n)$ 个。在枚举决策时，一旦确定了 $S_0$ ，实际上可以计算出  $r_0$ 或者 $c_0$ （或者发现不存在这样的 $r_0$ 或者 $c_0$ ），因此决策数为 $O(x3^n)$  ，这也是本算法的时间复杂度。由于很多状态达不到，推荐用记忆化搜索实现，实际运算量往往远小于 $O(x3^n)$ 。
+
+最后有一点需要注意，输入之后需要比较所有 $a_i$ 之和是否为  $x \times y$ (?) 。代码如下：
+
+```
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+using namspace std;
+
+const int maxn=16;
+int const maxw =100+10;
+int n,A[maxn],sum[1<<maxn],f[1<<maxn][maxw],vis[1<<maxn][maxw];
+
+int bitcount(int x){return x==0?0:bitcount(x/2)+(x&1);}
+int dp(int S,int x){
+	if(vis[S][x]) return f[S][x];
+	vis[S][x]=1;
+	int& ans=f[S][x];
+	if(bitcount(S)==1) return ans=1;
+	int y=sum[S]/x;
+	for(int S0=(S-1)&S;S0;S0=(S0-1)&S){
+			int S1=S-S0;
+			if(sum[S0]%x==0 && dp(S0,min(x,sum[S0]/x)) && dp(S1,min(x,sum[S1]/x))) return ans=1;
+			if(sum[S0]%y==0 && dp(S0,min(y,sum[S0]/y)) && dp(S1,min(y,sum[S1]/y))) return ans=1;
+	}
+	return ans=0;
+}
+int main(){
+	int kase=0,n,x,y;
+	while(scanf("%d",&n)==1 && n){
+		scanf("%d%d",&x,&y);
+		for(int i=0;i<n;i++) scanf("%d",&A[i]);
+		memset(sum,0,sizeof(sum));
+		for(int S=0;S<(1<<n);S++)
+			for(int i=0;i<n;i++) if(S&(1<<i)) sum[S]+=A[i];
+		memset(vis,0,sizeof(vis));
+		int ALL=(1<<n)-1;
+		int ans;
+		if(sum[ALL]!=x*y || sum[ALL]%x!=0) ans=0;
+		else ans=dp(ALL,min(x,y));
+		printf("Case %d: %s\n",++kase,ans? "YES":"NO");
+	}
+	return 0;
+}
+```
 
 ## 1.5小结与习题
+
+本章极少了不少问题求解和算法设计的方法和技巧。这些内容有难有易，不必强求第一次就全部看懂，需要反复阅读、细心体会。
+
+> 1.问题求解策略
+
+本章介绍了贪心算法、暴力法、二分法等常用算法，以及各种思维方式。如下表：
+
+|类别|题号|统计|题目名称（英文）|备注|
+|-|-|-|-|-|
+|例题1|UVa11292|810/91.60%|TheDragonofLoowater|排序后用贪心法|
+|例题2|UVa11792|274/86.86%|CommandoWar|用贪心算法求最优排列；用相邻交换法证明正确性|
+|例题3|UVa11300|109/58.72%|SpreadingTheWealth|用代数法进行数学推导；中位数|
+|例题4|LA3708|177/85.88%|Graveyard|推理：参考系|
+|例题5|UVa10881|177/85.88%|Piotr`sAnts|等效变换：排序|
+|例题6|LA2995|87/78.16%|ImageisEverything|三维坐标系；迭代更新|
+|例题7|UVa11464|87/78.16%|EvenParity|部分枚举；递推|
+|例题8|LA3401|84/89.29%|ColoredCubes|部分枚举；贪心|
+|例题9|UVa11210|111/85.59%|ChineseMahjong|回溯法；以中国麻将为背景|
+|例题10|UVa11384|333/96.10%|HelpisneededforDexter|问题转化；递归|
+|例题11|UVa10795|113/84.96%|ADifferentTask|汉诺塔问题；递归|
+|例题12|LA3971|277/89.17%|Assemble|二分法；贪心|
+|例题13|LA3635|329/87.54%|Pie|二分法|
+|例题14|UVa11520|650/96.92%|FilltheSquare|求字典序最小的解；贪心|
+|例题15|LA3902|127/68.50%|Network|树上的最优化问题；贪心|
+|例题16|LA3177|45/77.78%|BejingGuards|二分法；贪心|
+
+仅完成书中的例题还远远不够，下面将给出一定数量的习题，以方便读者练习和提高。限于篇幅，有些输入输出格式较为简单的题目省略了“输入格式”和“输出格式”两个部分，读者可自行参考英文原题。
+
+首先是一些入门题目：
+
+|题号|统计|题目名称（英文）|备注|
+|-|-|-|-|
+|UVa11636|2334/95.76%|HelloWorld!|读者独立思考|
+|UVa11039|747/91.16%|BuildingDesigning|读者独立思考|
+|LA3213|103/86.41%|AncientCipher|读者独立思考|
+|LA3602|9/55.56%|DNAConsensusString|读者独立思考|
+|UVa10970|4760/97.44%|BigChocolate|不需要动态规划|
+|UVa10340|7935/87.54%|AllinAll|读者独立思考|
+
+接下来时需要多一些思考的题目。
+
+|题号|统计|题目名称（英文）|备注|
+|-|-|-|-|
+|UVa10382|-|WateringGrass|经典模型；贪心|
+|UVa10905|-|Children`sGame|贪心。容易想错！建议编程并提交|
 
 # 第二章 数学基础
 
