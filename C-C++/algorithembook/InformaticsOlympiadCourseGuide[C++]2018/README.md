@@ -4413,6 +4413,26 @@ int main(){
 ### 实践巩固
 
 1. 阅读程序，回答问题。
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int s,a,n;
+    s=0;a=1;
+    cin>>n;
+    do{
+	s+=1;a-=2;
+    }while(a!=n);
+    cout<<s<<endl;
+    return 0;
+}
+```
+
+若要使程序的输出值为2,应该从键盘输入（）。
+
+A. -1	B. -3	C. -5	D. 0
+
 2. 角谷猜想。（suppose，1s，128MB）
 3. 数字反转。（rev，1s，128MB）
 
