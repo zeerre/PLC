@@ -2736,6 +2736,41 @@ int main(){
 |-|-|-|-|
 |UVa10382|-|WateringGrass|经典模型；贪心|
 |UVa10905|-|Children`sGame|贪心。容易想错！建议编程并提交|
+|LA4254|-|Processor|二分法|
+|UVa11627|-|Slalom|二分法|
+|UVa11134|-|FabledRooks|经典问题的变形|
+|UVa11100|-|TheTrip，2007|读者独立思考|
+|LA4725|-|Airport|读者独立思考|
+|LA4850|-|Installations|读者独立思考|
+|LA3266|-|TianJi-TheHorseRacing|有多种方法|
+|UVa11389|-|TheBusDriverProblem|有多种方法|
+|LA4094|-|WonderTeam|读者独立思考|
+|LA3303|-|Songs|相邻交换法|
+|LA2757|-|Supermarket|经典问题|
+|LA3507|-|KeeptheCustomerSatisfied|经典问题的变形|
+|LA4324|-|UglyWindows|注意细节|
+|LA4328|-|PriestJohn`sBusiestDay|认真分析题目|
+|LA4636|-|CubistArtwork|有趣的题目：逻辑推理|
+
+**你好	世界！（HelloWorld！，UVa11636）**
+
+你刚刚学会用 `printf("Hell World!\n");` 向世界问好了，因此非常兴奋，希望输出n条“HelloWorld！”信息，但你还没有学习循环语句，因此只能通过复制/粘贴的方式用n条 `printf`语句来解决。比如经过一次复制/粘贴后，一条语句会变成两条语句，再经过一次复制/粘贴后，两条语句会变成4条语句 $\ldots$ 至少需要复制/粘贴几次，才能是语句的条数恰好为n?输入（ $0\lt n\lt 10001$ ），输出最小复制/粘贴的次数。提示：每次可以只复制/粘贴一部分语句。
+
+**设计建筑物（BuildingDesigning,UVa11039）**
+
+有n个绝对值各不相同的非0整数，选出尽量多的数，拍成一个序列，使得正负号交替，且绝对值递增。输入整数 $n(1\leqslant n\leqslant 500000)$ 和n个整数，数处最长序列长度。
+
+**古老的密码（AncientCipher，NEERC2004,LA3213）**
+
+给定两个长度均为n的字符串，判断它们之间的26个字母能否一一对应，即做一个一一映射后使得两个字符串相同（比如ABB和CDD可以一一对应，方法是 $A\rightarrow C, B\rightarrow D ,$ 但 ABC和DED不能一一对应）。输入两个字符串，输出YES或者NO。
+
+**DNA序列（DNA Consensus String，Seoul2006,LA3602）**
+
+给定m个长度均为n的DNA序列，求一个DNA序列，使其到所有序列的总Hamming距离尽量小。两个登场字符串的Hamming距离等于f子ubutong的位置个数。如有多解，求字典序最小的解。输入整数m和n $(4\leqslant m\leqslant 50,4\leqslant n\leqslant 1000)$ ，以及m个长度为n的DNA序列（只包含字母A、C、G、T），输出让Hamming距离最小的DNA序列和其对应的距离。
+
+**大块巧克力（BigChocolate，UVa10970）**
+
+把一个m行n列的矩形巧克力切成mn个 $1\times 1$ 的方块，需要切几刀？
 
 # 第二章 数学基础
 
