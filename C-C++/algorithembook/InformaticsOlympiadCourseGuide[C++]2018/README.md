@@ -4529,10 +4529,77 @@ graph TD
 #include<cstdio>
 using namespace std;
 int main(){
-    int i=1;
     for(int i=1;i<=10;i++)
     	 printf("@");
     printf("\n");
+    return 0;
+}
+```
+
+for 语句写法灵活，上述程序也可以写成：
+
+```
+#include<cstdio>
+using namespace std;
+int main(){
+    int i=1;
+    for(;i<=10;i++)
+    	 printf("@");
+    printf("\n");
+    return 0;
+}
+```
+
+还可以写成：
+
+```
+#include<cstdio>
+using namespace std;
+int main(){
+    for(;i<=10;){
+    	 printf("@");
+	 i++;
+    }
+    printf("\n");
+    return 0;
+}
+```
+
+* 例2 斐波纳契数列
+
+* 【问题描述】
+
+斐波纳契数列是值这样的数列：第一个数和第二个数都是1,接下来每个数都等于前面2个数之和。编程输入一个正整数k，输出斐波纳契数列第k个数。
+
+* 【输入格式】
+
+一行一个正整数k， $1\leqslant k\leqslant 46$ 。
+
+* 【输出格式】
+
+一行一个正整数，表示斐波纳契数列第k个数的大小。
+
+* 【样例输入】
+
+19
+
+* 【样例输出】
+
+4181
+
+* 【代码如下】
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int k;
+    cin>>k;
+    int k1=1,k2=1,k3=1;
+    for(int i=3;i<=k;i++){
+    	k3=k1+k2;k1=k2;k2=k3;
+    }
+    cout<<k3<<endl;
     return 0;
 }
 ```
