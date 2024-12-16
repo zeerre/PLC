@@ -2826,6 +2826,18 @@ int main(){
 
 对于每组数据，输出可以通过所有旗门的滑雪板的最大速度。
 
+**传说中的车（Fabled Rooks，UVa11134）**
+
+你的任务是在 $n\times n$ 棋盘上放n辆车，使得任意两辆车不相互攻击，且第i辆车在一个给定的矩形 $R_i$ 之内。
+
+* 【输入格式】
+
+输入包含度组数据。每组数据的第一行为整数 n $(1\leqslant n\leqslant 5000)$ ；以下n行每行用4个整数 $xl_i,yl_i,xr_i,yr_i(1\leqslant xl_i\leqslant xr_i\leqslant n,1\leqslant yl_i\leqslant yr_i\leqslant n)$ 描述一个矩形，其中 $(xl_i,yl_i)$ 是左上角坐标， $(xr_i,yr_i)$ 是右下角坐标。换句话说，第i个车的位置（x，y）必须满足 $xl_i\leqslant x\leqslant xr_i$ 和 $yl_i\leqslant y\leqslant yr_i$ 。输入结束标志为 n=0。
+
+* 【输出格式】
+
+对于每组数据，如果无解，输出IMPOSSIBLE；否则输出n行，依次为第 $1,2,\ldots,n$ 个车的坐标。
+
 # 第二章 数学基础
 
 ## 2.1基本计数方法
