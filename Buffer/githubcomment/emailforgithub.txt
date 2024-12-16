@@ -1,0 +1,127 @@
+Hacker（stevenzdg988 ）
+Emails
+3442417@qq.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+stevenzdg988@gmail.com
+–
+Primary
+This email will be used for account-related notifications and can also be used for password resets.
+
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+Receives notifications
+This email address is the default used for GitHub notifications, i.e., replies to issues, pull requests, etc.
+
+zeerre99988@gmail.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+zeerre98998@gmail.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+
+
+#########################################################################################
+GeekBear (GeekBearHacker)
+Emails
+GeekBearHacker@gmail.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+Receives notifications
+This email address is the default used for GitHub notifications, i.e., replies to issues, pull requests, etc.
+
+176856485@qq.com
+–
+Primary
+This email will be used for account-related notifications and can also be used for password resets.
+
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+2589363580@qq.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+3010670580@qq.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+
+
+#########################################################################################
+Zee.rre (zeerre)
+Emails
+zeerre98988@gmail.com
+–
+Primary
+This email will be used for account-related notifications and can also be used for password resets.
+
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+Receives notifications
+This email address is the default used for GitHub notifications, i.e., replies to issues, pull requests, etc.
+
+2339175621@qq.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+519943179@qq.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+
+#########################################################################################
+Hacker (frstlis)
+Emails
+48125063@qq.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+steven_zdg988@sina.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+zeerre98989@gmail.com
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+zeerre98999@gmail.com
+–
+Primary
+This email will be used for account-related notifications and can also be used for password resets.
+
+Visible in emails
+This email may be used as the 'author' or 'committer' address for web-based Git operations, e.g., edits and merges.
+
+Receives notifications
+This email address is the default used for GitHub notifications, i.e., replies to issues, pull requests, etc.
+
+
+
+#########################################################################################
+haczr (haczr)
+Emails
+zeerregeek@gmail.com
+–
+Primary
+This email will be used for account-related notifications and can also be used for password resets.
+
+Not visible in emails
+This email will not be used as the 'from' address for web-based Git operations, e.g., edits and merges. We will instead use 136059167+haczr@users.noreply.github.com.
+
+Receives notifications
+This email address is the default used for GitHub notifications, i.e., replies to issues, pull requests, etc.
+
+geekzeerre@gmail.com
+Not visible in emails
+This email will not be used as the 'from' address for web-based Git operations, e.g., edits and merges. We will instead use 136059167+haczr@users.noreply.github.com.
+
+17953850@qq.com
+Not visible in emails
+This email will not be used as the 'from' address for web-based Git operations, e.g., edits and merges. We will instead use 136059167+haczr@users.noreply.github.com.
