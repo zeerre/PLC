@@ -2872,7 +2872,44 @@ int main(){
 
 **安装服务（Installations，Daejon2010,LA4850）**
 
-工程师要安装n个服务，其中第i个服务 $J_i$ 需要 $s_i$ 单位的安装时间，截止时间为 $d_i$ 。
+工程师要安装n个服务，其中第i个服务 $J_i$ 需要 $s_i$ 单位的安装时间，截止时间为 $d_i$ 。如果在截止时间之前完成任务，不会有任何惩罚：否则惩罚值为任务完成时间与截止时间之差。换句话说，如果实际完成时间为 $C_i$ ，则惩罚值为 $\max\lbrace 0,{C_i-d_i}\rbrace$ 。从t=0时刻开始执行任务，但同一时刻只能执行一个任务。你的任务是让惩罚值最大的两个任务的惩罚值之和最小。
+
+假设有两个任务，安装时间 $s_i$ 和截止时间 $d_i$ 所组成的二元组 $(s_i,d_i)$ 分别为 (1,7),(4,7),(2,4),(2,15),(3,5),(3,8)。描述了一个最优解，其中惩罚值最小的两个任务分别为 $J_2$ 和 $J_6$ ，二者的惩罚值之和为 6+1=7。
+
+```mermaid
+gantt
+
+dateFormat YYYY-MM-DD
+title 图示
+
+section 需求文档
+	登录注册:done,login,2021-06-25,2021-06-28
+	添加好友与分组:add, 2021-06-29,3d
+	单聊 :active ,chat, 2021-07-01,2d
+	群聊 :groupChat,after chat,5d
+	朋友圈 :crit,5d
+	其他:3d
+section 开发
+	开发登录注册:done,d-login,2021-06-25,24h
+	开发添加好友与分组:active,d-add,after d-login,5d
+	开发单聊与群聊:crit,d-chat,after d-add,7d
+	开发朋友圈:d-friend,after d-chat,7d
+	
+section 测试
+	测试用例与玩耍:active,test,2021-06-25,10d
+	开始测试部分接口:crit,start-test,after test,11d
+```
+
+* 【输入格式】
+
+输入的第一行为数据组数T。每组数据的第一行为整数n $(1\leqslant n\leqslant 500)$ ；以下n行每行两个整数 $s_i$ 和 $d_i$ ，即任务 $J_i$ 的安装时间和截止时间 $(1\leqslant s_i\leqslant d_i\leqslant 10000)$ 。
+
+* 【输出格式】
+
+对于每组数据，输出两个最大惩罚值之和的最小值。
+
+**田忌赛马（TianJi-The Horse Racing，Shanghai 2004,LA3266）**
+
 
 # 第二章 数学基础
 
