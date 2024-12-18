@@ -5037,6 +5037,178 @@ int main(){
 ```
 
 ## 第五课 break 和 continue语句
+
+### 学习目标
+
+1. 理解break语句和continue语句的作用。
+2. 学会使用break语句和continue语句。
+
+### 知识点
+
+再循环结构中，有时需要提前跳出循环体，或者忽略本次循环的后续语句而去执行下一次循环。为此C++提供了 `break`语句和`continue`语句。
+
+> break 语句
+
+再循环体中遇到break语句，就会立刻跳出循环体，执行循环结构后面的语句。
+
+* 与7无关的数。
+
+一个正整数，如果他能被7整除，或者他的某一位上的数字为7,则称其为“与7相关”的数，现在请编程求出所有小于或等于n的“与7无关”的正整数个数。
+
+* 【输入格式】
+
+一行一个正整数n， $n\leqslant 10^6。
+
+* 【输出格式】
+
+一行一个整数，表示答案。
+
+* 【样例输入】
+
+21
+
+* 【样例输出】
+
+17
+
+* 【分析】
+
+判断x中是否有数字7的时候，一旦出现 `x%10==7`，则说明x是与7相关的数，就可以用break语句立刻退出当前的while循环，这样可以提高程序的效率。
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int n,ans=0;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+    	    int flag1=1,flag2=1;
+	    if(i%7==0) flag1=0;
+	    int x=i;
+	    while(x){
+		if(x%10==7){flag2=0;break;}
+		x=x/10;
+	    }
+	    if(flag1 && flag2) ans++;
+    }
+    cout<<ans<<endl;
+    return 0;
+}
+```
+
+> continue语句
+
+在循环体中遇到continue语句，就会忽略本次循环的后续语句而去执行下一次循环。
+
+* 例2 与7无关的数。
+
+一个正整数，如果他能被7整除，或者他的某一位上的数字为7,则称其为“与7相关”的数，现在请编程求出所有小于或等于n的“与7无关”的正整数个数。
+
+* 【输入格式】
+
+一行一个正整数n， $n\leqslant 10^6。
+
+* 【输出格式】
+
+一行一个整数，表示答案。
+
+* 【样例输入】
+
+21
+
+* 【样例输出】
+
+17
+
+* 【分析】
+
+当i是7的倍数，即 `i%7==0` 时，说明i已经是与7相关的数了，此时就不再需要判断i的某一位是否是7了。所以，可以用continue忽略本次循环的后续语句，而去执行下一次循环，判断下一个数了。这样做同样可以提高程序的效率。
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int n,ans=0;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+    	    int flag=1;
+	    if(i%7==0) continue;
+	    int x=i;
+	    while(x){
+		if(x%10==7){flag2=0;break;}
+		x=x/10;
+	    }
+	    if(flag) ans++;
+    }
+    cout<<ans<<endl;
+    return 0;
+}
+```
+```
+#include<iostream>
+using namespace std;
+int main(){
+	int n,ans=0;
+	cin>>n;
+	for(int i=1;i<=n;i++){
+		int flag=1;
+		if(i%7==0) continue;
+		//{cout<< i <<" ";continue;}
+		int x=i;
+		while(x){
+			if(x%10==7){flag=0;break;}
+			x=x/10;
+		}
+		if(flag) {ans++;cout<<i<<" ";}
+		//if(!flag) cout<<i<<" ";
+	}
+	cout<<endl;
+	cout<<"none of 7 is:"<< ans <<endl;
+	return 0;
+}
+```
+
+> break 语句和 continue 语句的应用举例
+
+* 例3 素数的判定。
+
+输入一个正整数，判断其是否为素数。如果是则输出“prime”；否则输出“not prime”。
+
+* 【输入格式】
+
+一行一个正整数 n, $2\leqslant n\leqslant 10^7$ 。
+
+* 【输出格式】
+
+一行一个字符串。
+
+* 【样例输入】
+
+8
+
+* 【样例输出】
+
+not prime
+
+* 【分析】
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int x;
+    cin>>x;
+    for(int i=2;i<=sqrt(x);i++){
+    	    if(x%i==0){
+		cout<<"not ";
+		break;
+	    }
+    }
+    cout<<"prime"<<endl;
+    return 0;
+}
+```
+
 ## 第六课 程序的调试与跟踪
 ## 第七课 循环结构应用举例
 
