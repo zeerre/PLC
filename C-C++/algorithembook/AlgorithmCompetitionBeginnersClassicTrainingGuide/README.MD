@@ -2916,6 +2916,22 @@ int main(){
 
 用一些等大的立方体搭积木，每个立方体或者直接放在地面的网格上，或者放在另一个立方体的上面，给出正视图和侧视图，你的任务是判断最少要用多少个立方体。
 
+|题号|题目名称（英文）|备注|
+|-|-|-|
+|LA4253|Archery|枚举。注意特殊情况和精度|
+|LA3667|Ruler|搜索|
+|LA5693|CompressTheString|搜索。需要优化|
+|LA5704|YummyTriangularPizza|回溯法|
+|UVa10825|AnagramAndMultiplication|枚举（需要猜想）|
+|UVa10639|SquarePuzzle|回溯法|
+|LA3403|MobileComputting|枚举二叉树|
+|LA3406|Bingo|注意枚举方式|
+|LA3621|PowerCalculus|经典的搜索题目；注意优化|
+|LA2108|HousesDivided|搜索；需要优化|
+|LA5842|Equipment|需要认真分析题目|
+|LA5844|Leet|以”火星文“为背景的题目|
+|LA4644|HobbyOnRails|比较繁琐的搜索题目|
+
 # 第二章 数学基础
 
 ## 2.1基本计数方法
