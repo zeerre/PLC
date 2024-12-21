@@ -5210,6 +5210,52 @@ int main(){
 }
 ```
 
+* 例4 素数的统计。
+
+输入两个正整数m和n，判断m和n之间（含m和n）一共有多少个素数。
+
+* 【输入格式】
+
+一行两个正整数m和n， $2\leqslant m\leqslant n\leqslant 10^4$ 。
+
+* 【输出格式】
+
+一行一个整数，表示素数的个数。
+
+* 【样例输入】
+
+5 10
+
+* 【样例输出】
+
+2
+
+* 【分析】
+
+```
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main(){
+    int m,n,i,j,ans=0;
+    cin>>m>>n;
+    for(i=m;i<=n;i++){
+	for(j=2;j<sqrt(i);j++)
+		if(i%j==0) break;
+	if(j<sqrt(i)) continue;
+	ans++;
+    }
+    cout<<ans<<endl;
+    return 0;
+}
+```
+
+### 实践巩固
+
+1.
+2.
+3.
+
 ## 第六课 程序的调试与跟踪
 ## 第七课 循环结构应用举例
 
