@@ -5252,11 +5252,97 @@ int main(){
 
 ### 实践巩固
 
+1. 阅读和比较以下两个程序，分别写出运行结果。
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    for(int i=10;i>0;i--){
+    	    if(i==5) continue;
+	    cout<<i<<endl;
+    }
+    return 0;
+}
+```
+输出：？
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    for(int i=10;i>0;i--){
+    	    if(i==5) break;
+	    cout<<i<<endl;
+    }
+    reurn 0;
+}
+```
+输出：？
+
+2. 以下程序运行后的输出结果是（）。
+
+A. 2,2	B. 2,3	C. 3,2	D. 3,3
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+    int k=4,n=0;
+    while(n<k){
+	n++;
+	if(n%3!=0) continue;
+	k--;
+    }
+    cout<<k<<","<<n<<endl;
+    return 0;
+}
+```
+
+3. 最大公约数（greatest，1s，128MB）
+
+输入两个正整数x和y，输出它们的最大公约数。
+
+* 【输入格式】
+
+一行两个正整数x和y， $2\leqslant x\leqslant y\leqslant 10^7$ ，中间用一个空格隔开。
+
+* 【输出格式】
+
+一行一个正整数，表示他们的最大公约数。
+
+*【样例输入】
+
+```
+8 12
+```
+
+* 【样例输出】
+
+```
+4
+```
+
+## 第六课 程序的调试与跟踪
+
+### 学习目标
+
+熟练掌握程序的条时与跟踪。
+
+### 知识点
+
+> 1.静态差错
+
+> 2.通过添加输出语句条是程序
+
+> 3.借助IDE的调试工具实施单步跟踪
+
+### 实践巩固
+
 1.
 2.
 3.
 
-## 第六课 程序的调试与跟踪
 ## 第七课 循环结构应用举例
 
 # 第五单元 数组
