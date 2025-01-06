@@ -5486,6 +5486,54 @@ int main(){
 
 * 【输出格式】
 
+一行两个正整数A‘ 和 B’ ，中间用一个空格隔开，表示化简后的比例。
+
+* 【样例输入】
+
+1498 902 10
+
+* 【样例输出】
+
+5 3
+
+* 【分析】
+
+由于 $L\leqslant 100$ ，可以穷举 A‘ 和 B’ ，然后判断 A‘ 和 B’ 是否互质。如果互质，那么判断 “A‘ / B’ - A/B ”的值是否更小，如果满足，则更新最小值mindiff和答案resa和resb。
+
+```
+#include<cstdio>
+#include<iostream>
+using namespace std;
+int main(){
+    int a,b,l;
+    double mindiff=(double)100000000;
+    int resa,resb;
+    for(int i=1;i<=l;i++)
+    	 for(int j=1;j<=l;j++){
+	 	 int x,y,z;
+		 if(x<j){
+			x=j;
+			y=i;
+		}else{
+			x=i;
+			y=j;
+		}do{
+			z=x%y;
+			x=y;
+			y=z;
+		}while(z);
+		if(x==1&&((double)i)/j>=((double)a)/b &&
+		((double)i)/j-((double)a)/b<mindiff){
+			mindiff=((double)i)/j-((double)a)/b;
+			resa=i;
+			resb=j;
+		}
+	}
+    cout<<resa<<" "<<resb<<endl;
+    return 0;
+}
+```
+
 ### 实践巩固
 
 1.
