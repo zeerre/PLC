@@ -3005,6 +3005,55 @@ $6\times 142857=857142$ <br>
 
 **Bingo游戏（Bingo，Tokyo2005,LA3406）**
 
+有P个 $M\times N$ 的数字矩阵 （ $2\leqslant P\leqslant 4, 3\leqslant M\leqslant 4$ ）。你可以一次选择一些整数，每选一个整数就把所有矩阵中的同一数字全部圈起来。如果某个矩阵中某一行、某一列或者某条主对角线（一共有两条）上的 M 个数字都被圈起来，我们就说这个矩阵 Bingo 了。你的任务是找一个最短的数字序列，时的最后所有的矩阵按照从左到右的顺序一次 Bingo （相邻矩阵可以同时 Bingo ）。
+
+**快速幂计算（Power Calculation，Yokohama 2006,LA 3621）**
+
+给出x和正整数n（ $1\leqslant n\leqslant 1000$ ），问最少需要几次乘除法可以得到 $x^n$ 。比如， $x^31$ 需要6次乘除计算： $x^2=x\times x, x^4=x^2\times x^2,x^8=x^4\times x^4,x^16=x^8\times x^8,x^{32}=x^{16}\times x^{16},x^{31}=x^{32}/x$ 。计算中x的指数应当总是正整数（比如 $x^{-3}=x/x^4$ 是不允许的）。
+
+> 2. 高效算法设计
+
+还有一些题目并不需要巧妙的思路和缜密的推理就能找到一个解决方案，值是时间效率难以令人满意。降低时间复杂度的方法有很多，本章的俄例题就覆盖了其中最常见的一些，如下：
+
+| | |||
+|-|-|-|-|
+|类别|题号|题目名称|备注|
+|例题17|UVa11462|AgeSort|排序后用贪心算法|
+|例题18|UVa11078|OpenCreditSystem|扫描、维护最大值|
+|例题19|UVa11549|CalculatorConundrum|Floyd判圈算法|
+|例题20|LA3905|Meteor|线性扫描；时间点处理|
+|例题21|LA2678|Subsequence|线性扫描；前缀和；单调性|
+|例题22|LA3029|CityGame|递推；扫描法|
+|例题23|LA3695|DistantGalaxy|枚举；线性扫描|
+|例题24|UVa20755|GarbageHeap|前缀和、降维、递推|
+|例题25|LA2965|JurassicRemains|中途相遇法|
+
+接下来人然列举一些习题，以供研究练习和提高：
+
+||||
+|-|-|-|
+|题号|题米名称（英文）|备注|
+|LA2963|Hypertransmission|扫描；维护信息|
+|UVa10827|MaximumSumOnATorus|前缀和；降维|
+|UVa10125|Sumsets|中途相遇法|
+|UVa10763|ForeignExchange|快速检索|
+|UVa10391|CompoundWords|字符串检索；哈希表|
+|UVa11054|WineTradingInGergovia|扫描法|
+|LA4726|Average|数形结合或者单调队列|
+|LA4851|Restaurant|思考？|
+|LA4950|SellingLand|思考？|
+|LA4356|Fire-ControlSystem|扫描法|
+|LA2689|CricketField|在 $W\times H$ 网格里找一个最大空正方形|
+|LA5052|GenomeEvolution|思考？|
+|LA3716|DNA Regions|利用数学变形或者数形结合|
+|LA4629|KnowledgeForTheMasses|第考？|
+|LA4621|Cav|思考？|
+|LA3693|BalancingTheScale|第考？|
+|LA4294|Shuffle|有多种方法|
+|LA5848|Soju|思考？|
+|LA4062|YouAreAroundMe...|思考？|
+
+**超级传输（Hypertransmission，NEERC2003,LA2963）**
 
 
 # 第二章 数学基础
